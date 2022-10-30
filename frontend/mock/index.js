@@ -1,11 +1,18 @@
 const express = require("express")
+
 const app = express()
 const port = 8001
 
-app.get("/", (req, res) => {
-  res.send("hello world!")
+app.use(express.json())
+
+const user = express.Router()
+
+app.use("/api/user", user)
+
+user.get("/whoami", (req, res) => {
+  res.status(200).json({ authenticated: false })
 })
 
 app.listen(port, () => {
-  console.log(`app listening on ${port}`)
+  console.log(`server running on: http://localhost:${port}`)
 })
