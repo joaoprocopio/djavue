@@ -13,3 +13,5 @@ pip-tools
 flake8
 black
 isort
+
+ipython
