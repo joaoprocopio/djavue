@@ -6,7 +6,8 @@
     "password": "password",
     "first_name": "Roger",
     "last_name": "Camargo",
-    "email": "roger.camargo@gmail.com"
+    "email": "roger.camargo@gmail.com",
+    "last_login": ""
   },
   {
     "id": 2,
@@ -15,7 +16,8 @@
     "password": "password",
     "first_name": "Renzo",
     "last_name": "Nuccitelli",
-    "email": "renzo.nuccitelli@hotmail.com"
+    "email": "renzo.nuccitelli@hotmail.com",
+    "last_login": ""
   },
   {
     "id": 3,
@@ -24,6 +26,7 @@
     "password": "password",
     "first_name": "Mauro",
     "last_name": "Assis",
-    "email": "mauro.assis@yahoo.com.br"
+    "email": "mauro.assis@yahoo.com.br",
+    "last_login": ""
   }
 ]
