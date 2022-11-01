@@ -1,5 +1,3 @@
-import ErrorLayout from "~/layouts/ErrorLayout.vue"
-
 import LandingPage from "~/pages/LandingPage.vue"
 import ErrorPage from "~/pages/ErrorPage.vue"
 
@@ -15,7 +13,7 @@ const routes = [
     component: ErrorPage,
     meta: {
       layout: {
-        name: ErrorLayout,
+        name: "ErrorLayout",
       },
     },
   },

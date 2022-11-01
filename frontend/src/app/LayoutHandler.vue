@@ -8,8 +8,6 @@
   import { computed } from "vue"
   import { useRoute } from "vue-router"
 
-  import DefaultLayout from "~/layouts/DefaultLayout.vue"
-
   const route = useRoute()
-  const layout = computed(() => route?.meta?.layout?.name || DefaultLayout)
+  const layout = computed(() => route?.meta?.layout?.name || "DefaultLayout")
 </script>
