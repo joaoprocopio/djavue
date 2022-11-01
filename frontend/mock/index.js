@@ -1,44 +1,47 @@
-// imports
-const express = require("express")
-const cors = require("cors")
-const crypto = require("node:crypto")
+import { db } from "./db/index.js"
+import express from "express"
+import cors from "cors"
+import dayjs from "dayjs"
+import utc from "dayjs/plugin/utc.js"
+import { randomUUID } from "node:crypto"
 
-// startup and configuration
 const app = express()
 const port = 8001
 
-// middleware
 app.use(express.json())
 app.use(cors())
 
-// routers
+dayjs.extend(utc)
+
 const user = express.Router()
 app.use("/api/user", user)
-user.post("/login", (request, response) => {
+user.post("/login", async (request, response) => {
   const { username, password } = request.body
 
   try {
-    const user = db.user.find((user) => {
-      user.username === username && user.password === password
-    })
+    const user = db.data.user.find(
+      (user) => user.username === username && user.password === password
+    )
 
-    const sessionid = crypto.randomUUID()
-    const lastLogin = new Date().toUTCString()
+    const lastLogin = dayjs().utc().toString()
+    const expireDate = dayjs().utc().add(15, "days").toString()
+
+    const sessionid = randomUUID()
 
     user.last_login = lastLogin
+
+    db.data.session.push({
+      session_key: sessionid,
+      session_data: user,
+      expire_date: expireDate,
+    })
+
+    await db.write()
 
     response
       .cookie("sessionid", sessionid, { httpOnly: true })
       .status(200)
-      .send({
-        id: user.id,
-        name: user.name,
-        username: user.username,
-        first_name: user.first_name,
-        last_name: user.last_name,
-        email: user.email,
-        last_login: lastLogin,
-      })
+      .send(user)
   } catch {
     response.status(404).send({}).end()
   }
@@ -47,14 +50,7 @@ user.post("/login", (request, response) => {
 user.get("/whoami", (request, response) => {
   try {
     response.status(200).send({
-      user: {
-        id: user.id,
-        name: user.name,
-        username: user.username,
-        first_name: user.first_name,
-        last_name: user.last_name,
-        email: user.email,
-      },
+      user: user,
       authenticated: true,
     })
   } catch {

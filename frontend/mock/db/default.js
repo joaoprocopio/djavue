@@ -1,0 +1,37 @@
+const defaultData = {
+  user: [
+    {
+      id: 1,
+      name: "Roger Camargo",
+      username: "roger.camargo",
+      password: "password",
+      last_login: "",
+      first_name: "Roger",
+      last_name: "Camargo",
+      email: "roger.camargo@gmail.com",
+    },
+    {
+      id: 2,
+      name: "Renzo Nuccitelli",
+      username: "renzo.nuccitelli",
+      password: "password",
+      last_login: "",
+      first_name: "Renzo",
+      last_name: "Nuccitelli",
+      email: "renzo.nuccitelli@hotmail.com",
+    },
+    {
+      id: 3,
+      name: "Mauro Assis",
+      username: "mauro.assis",
+      password: "password",
+      last_login: "",
+      first_name: "Mauro",
+      last_name: "Assis",
+      email: "mauro.assis@yahoo.com.br",
+    },
+  ],
+  session: [],
+}
+
+export { defaultData }
