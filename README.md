@@ -17,30 +17,12 @@ you should have installed `pyenv`, so you can manage multiple python versions.
 
 if you don't have `pyenv` already installed, check this [guide](https://github.com/pyenv/pyenv#installation)
 
-### `virtualenv`
+### `virtual environment`
 
 ```bash
-pyenv which virtualenv
-```
-
-> if you get a response like:
->
-> ```bash
-> pyenv: virtualenv: command not found
-> ```
->
-> you should run:
-> >
-> > ```bash
-> > pip install virtualenv
-> > ```
-> >
-> if everything is ok, just follow.
-
-```bash
-virtualenv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
+pyenv install 3.10.4
+pyenv virtualenv 3.10.4 djavue
+pip install -r requirements-dev.txt
 ```
 
 ## `frontend` set-up
