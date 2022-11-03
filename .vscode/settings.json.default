@@ -9,10 +9,14 @@
     "python.formatting.provider": "black",
     "python.linting.flake8Enabled": true,
     "[python]": {
+        "editor.tabSize": 4,
         "editor.defaultFormatter": "ms-python.python",
         "editor.formatOnSave": true,
         "editor.codeActionsOnSave": {
             "source.organizeImports": true
         },
     },
+    "[yaml]": {
+        "editor.tabSize": 2
+    }
 }
