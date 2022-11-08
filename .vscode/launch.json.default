@@ -5,7 +5,31 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Python: Django",
+      "name": "Front: Run server",
+      "type": "node",
+      "request": "launch",
+      "cwd": "${workspaceFolder}/frontend",
+      "presentation": {
+        "hidden": true
+      },
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run",
+        "dev"
+      ]
+    },
+    {
+      "name": "Front: Run client",
+      "type": "chrome",
+      "request": "launch",
+      "presentation": {
+        "hidden": true,
+      },
+      "url": "http://localhost:5173",
+      "webRoot": "${workspaceFolder}/frontend"
+    },
+    {
+      "name": "Back: Run server",
       "type": "python",
       "request": "launch",
       "program": "${workspaceFolder}/manage.py",
@@ -16,7 +40,7 @@
       "justMyCode": true
     },
     {
-      "name": "Python: Pytest file",
+      "name": "Back: Test file",
       "request": "launch",
       "module": "pytest",
       "type": "python",
@@ -24,12 +48,21 @@
       "justMyCode": true
     },
     {
-      "name": "Python: Pytest project",
+      "name": "Bacl: Test project",
       "request": "launch",
       "module": "pytest",
       "type": "python",
       "cwd": "${workspaceFolder}",
       "justMyCode": true
     }
+  ],
+  "compounds": [
+    {
+      "name": "Front: Run server",
+      "configurations": [
+        "Front: Run client",
+        "Front: Run server"
+      ]
+    },
   ]
 }
