@@ -48,7 +48,7 @@
       "justMyCode": true
     },
     {
-      "name": "Bacl: Test project",
+      "name": "Back: Test project",
       "request": "launch",
       "module": "pytest",
       "type": "python",
