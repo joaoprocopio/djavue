@@ -1,3 +1,5 @@
+from json import loads
+
 from django.contrib.auth import authenticate, login, logout
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
@@ -9,8 +11,8 @@ from user.serializer import user_to_dict_json
 @csrf_exempt
 @require_POST
 def user_login(request):
-    username = request.POST.get("username")
-    password = request.POST.get("password")
+    username = loads(request.body).get("username")
+    password = loads(request.body).get("password")
 
     user = authenticate(username=username, password=password)
 
