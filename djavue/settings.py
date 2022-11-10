@@ -35,6 +35,7 @@ DJANGO_APPS = [
 
 LOCAL_APPS = [
     "user",
+    "blog",
 ]
 
 THIRD_PARTY_APPS = [
