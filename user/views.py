@@ -11,8 +11,10 @@ from user.serializer import user_to_dict_json
 @csrf_exempt
 @require_POST
 def user_login(request):
-    username = loads(request.body).get("username")
-    password = loads(request.body).get("password")
+    request_body = loads(request.body)
+
+    username = request_body.get("username")
+    password = request_body.get("password")
 
     user = authenticate(username=username, password=password)
 
