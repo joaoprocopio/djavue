@@ -1,7 +1,7 @@
 import { createApp } from "vue"
 import { createPinia } from "pinia"
 import { router } from "~/router"
-import { layoutPlugin } from "~/plugins"
+import { layoutPlugin, atomsPlugin } from "~/plugins"
 import App from "~/app/App.vue"
 
 import "~/assets/scss/index.scss"
@@ -12,6 +12,7 @@ const pinia = createPinia()
 app.use(pinia)
 app.use(router)
 app.use(layoutPlugin)
+app.use(atomsPlugin)
 
 app.mount("#app")
 
