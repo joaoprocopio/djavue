@@ -44,7 +44,7 @@ services:
     image: djavue-frontend:dev
     command: npm run dev:disable-mock
     ports:
-      - 5173:5173
+      - 3000:3000
     depends_on:
       django:
         condition: service_started
