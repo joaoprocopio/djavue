@@ -5,30 +5,6 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Front-end: Run server",
-      "type": "node",
-      "request": "launch",
-      "cwd": "${workspaceFolder}/frontend",
-      "presentation": {
-        "hidden": true
-      },
-      "runtimeExecutable": "npm",
-      "runtimeArgs": [
-        "run",
-        "dev"
-      ]
-    },
-    {
-      "name": "Front-end: Run client",
-      "type": "chrome",
-      "request": "launch",
-      "presentation": {
-        "hidden": true,
-      },
-      "url": "http://localhost:3000",
-      "webRoot": "${workspaceFolder}/frontend"
-    },
-    {
       "name": "Back-end: Set-up",
       "type": "python",
       "request": "launch",
@@ -56,13 +32,4 @@
       "justMyCode": true
     }
   ],
-  "compounds": [
-    {
-      "name": "Front-end: Set-up",
-      "configurations": [
-        "Front-end: Run client",
-        "Front-end: Run server"
-      ]
-    },
-  ]
 }
