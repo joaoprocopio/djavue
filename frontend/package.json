@@ -1,6 +1,7 @@
 {
   "name": "djavue",
   "version": "0.0.0",
+  "license": "UNLICENSED",
   "scripts": {
     "dev": "vite",
     "dev:disable-mock": "vite",
@@ -9,7 +10,7 @@
     "test": "vitest",
     "lint": "eslint . --ext .vue,.js --fix --ignore-path .gitignore",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build:storybook": "build-storybook"
   },
   "dependencies": {
     "axios": "^1.1.3",

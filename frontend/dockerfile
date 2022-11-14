@@ -5,19 +5,18 @@ WORKDIR /frontend
 ENV SHELL=/bin/sh LANG=en_US.UTF-8
 
 RUN apt-get update && \
-    apt-get install -y \
-    wget \
-    net-tools \
-    build-essential
+  apt-get install -y \
+  wget \
+  net-tools \
+  build-essential
 
 COPY package.json /frontend/
-COPY package-lock.json /frontend/
+COPY yarn.lock /frontend/
 
-RUN npm ci && \
-    npm cache clean --force && \
-    npm cache verify
+RUN yarn install --frozen-lockfile && \
+  yarn cache clean
 
 COPY . /frontend/
 
-RUN npm run build
-CMD npm run start
+RUN yarn build
+CMD yarn start
