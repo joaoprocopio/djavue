@@ -7,8 +7,6 @@
     "build": "vite build",
     "preview": "vite preview",
     "test": "vitest --environment jsdom --root src/",
-    "test:e2e": "start-server-and-test preview :4173 'cypress run --e2e'",
-    "test:e2e:dev": "start-server-and-test 'vite dev --port 4173' :4173 'cypress open --e2e'",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
@@ -37,9 +35,7 @@
     "@vue/test-utils": "^2.1.0",
     "autoprefixer": "^10.4.13",
     "babel-loader": "^8.3.0",
-    "cypress": "^10.10.0",
     "eslint": "^8.22.0",
-    "eslint-plugin-cypress": "^2.12.1",
     "eslint-plugin-storybook": "^0.6.7",
     "eslint-plugin-vue": "^9.3.0",
     "jsdom": "^20.0.1",

@@ -9,12 +9,9 @@ module.exports = {
     "@vue/eslint-config-prettier",
     "plugin:storybook/recommended",
   ],
-  overrides: [
-    {
-      files: ["cypress/e2e/**/*.{cy,spec}.{js,ts,jsx,tsx}"],
-      extends: ["plugin:cypress/recommended"],
-    },
-  ],
+  env: {
+    node: true,
+  },
   parserOptions: {
     ecmaVersion: "latest",
   },
