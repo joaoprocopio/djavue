@@ -24,6 +24,6 @@ export default defineConfig(() => {
       root: "src/",
       environment: "jsdom",
     },
-    publicDir: "./src/public",
+    publicDir: "./src/public/",
   }
 })
