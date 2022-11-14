@@ -6,8 +6,8 @@
     "dev:disable-mock": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "test": "vitest --environment jsdom --root src/",
-    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
+    "test": "vitest",
+    "lint": "eslint . --ext .vue,.js --fix --ignore-path .gitignore",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },

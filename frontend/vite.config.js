@@ -6,10 +6,6 @@ import vue from "@vitejs/plugin-vue"
 // https://vitejs.dev/config/
 export default defineConfig(() => {
   return {
-    server: {
-      host: "0.0.0.0",
-      port: 3000,
-    },
     plugins: [vue()],
     resolve: {
       alias: {
@@ -19,6 +15,14 @@ export default defineConfig(() => {
     },
     build: {
       sourcemap: true,
+    },
+    server: {
+      host: "0.0.0.0",
+      port: 3000,
+    },
+    test: {
+      root: "src/",
+      environment: "jsdom",
     },
     publicDir: "./src/public",
   }
