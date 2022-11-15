@@ -1,58 +1,54 @@
 <template>
-  <button
-    type="button"
+  <component
+    :is="$props.tag"
+    :disabled="$props.disabled || $props.loading"
     :class="classes"
-    @click="onClick"
-    :style="style">
-    {{ label }}
-  </button>
+    v-bind="$attrs">
+    <slot />
+  </component>
 </template>
 
-<script>
-  import "./button.css"
-  import { reactive, computed } from "vue"
+<script setup>
+  import { computed } from "vue"
 
-  export default {
-    name: "DButton",
-
-    props: {
-      label: {
-        type: String,
-        required: true,
-      },
-      primary: {
-        type: Boolean,
-        default: false,
-      },
-      size: {
-        type: String,
-        validator: function (value) {
-          return ["small", "medium", "large"].indexOf(value) !== -1
-        },
-      },
-      backgroundColor: {
-        type: String,
-      },
+  const $props = defineProps({
+    tag: {
+      type: String,
+      default: "button",
+      validator: (value) =>
+        ["button", "a", "label", "RouterLink"].includes(value),
     },
-
-    emits: ["click"],
-
-    setup(props, { emit }) {
-      props = reactive(props)
-      return {
-        classes: computed(() => ({
-          "storybook-button": true,
-          "storybook-button--primary": props.primary,
-          "storybook-button--secondary": !props.primary,
-          [`storybook-button--${props.size || "medium"}`]: true,
-        })),
-        style: computed(() => ({
-          backgroundColor: props.backgroundColor,
-        })),
-        onClick() {
-          emit("click")
-        },
-      }
+    block: {
+      type: Boolean,
+      default: false,
     },
-  }
+    // disabled: boolean
+    // loading: boolean
+  })
+
+  const classes = computed(() => ({
+    "d-button": true,
+    "d-button--block": $props.block,
+  }))
 </script>
+
+<style lang="scss">
+  .d-button {
+    @apply bg-neutral-300 border-neutral-400;
+    @apply font-bold;
+    @apply border-2 rounded-lg;
+    @apply px-4 py-2;
+
+    &--block {
+      @apply w-full;
+    }
+
+    &:hover {
+      @apply bg-neutral-200 border-neutral-300;
+    }
+
+    &:active {
+      @apply bg-neutral-100 border-neutral-200;
+    }
+  }
+</style>
