@@ -3,9 +3,11 @@ module.exports = {
   content: [
     "./index.html",
     "./src/app/**/*.{vue,js}",
-    "./src/components/**/*.{vue,js}",
     "./src/layouts/**/*.{vue,js}",
     "./src/pages/**/*.{vue,js}",
+    "./src/components/app/**/*.{vue,js}",
+    "./src/components/ui/atoms/**/*.{vue,js}",
+    "./src/components/ui/molecules/**/*.{vue,js}",
   ],
   theme: {
     fontFamily: {

@@ -1,4 +1,4 @@
-import { DButton } from "~/components/app/atoms"
+import { DButton } from "~/components/ui/atoms"
 
 const atomsPlugin = {
   install(Vue) {

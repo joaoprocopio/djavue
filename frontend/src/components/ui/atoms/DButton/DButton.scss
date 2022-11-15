@@ -1,0 +1,23 @@
+.d-button {
+  @apply tracking-wider uppercase font-bold;
+  @apply rounded;
+  @apply px-4 py-2;
+
+  // Variants
+  // &--filled {
+  // }
+
+  // States
+  &--block {
+    @apply w-full;
+  }
+
+  // &:hover {
+  // }
+
+  // &:active {
+  // }
+
+  // &:disabled {
+  // }
+}
