@@ -1,6 +1,6 @@
 import axios from "axios"
 
-const httpClient = axios.create({
+const $axios = axios.create({
   xsrfHeaderName: "X-CSRFToken",
   xsrfCookieName: "csrftoken",
   baseURL: "http://localhost:8000",
@@ -8,4 +8,4 @@ const httpClient = axios.create({
   timeout: 60000,
 })
 
-export { httpClient }
+export { $axios }
