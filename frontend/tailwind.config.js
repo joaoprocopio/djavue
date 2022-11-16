@@ -9,6 +9,11 @@ module.exports = {
     "./src/components/ui/atoms/**/*.{vue,js}",
     "./src/components/ui/molecules/**/*.{vue,js}",
   ],
+  safelist: [
+    {
+      pattern: /(bg|text)-./,
+    },
+  ],
   theme: {
     fontFamily: {
       sans: ["Roboto"],
