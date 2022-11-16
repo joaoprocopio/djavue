@@ -20,13 +20,6 @@ export default defineConfig(() => {
       host: "0.0.0.0",
       port: 3000,
     },
-    css: {
-      preprocessorOptions: {
-        scss: {
-          additionalData: `@import "~/assets/scss/index.scss";`,
-        },
-      },
-    },
     test: {
       root: "src/",
       environment: "jsdom",
