@@ -1,5 +1,6 @@
 <template>
+  <div>default layout!</div>
   <main>
-    <RouterView />
+    <slot />
   </main>
 </template>

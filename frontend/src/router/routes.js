@@ -9,7 +9,7 @@ const routes = [
   },
   {
     path: "/:pathMatch(.*)*",
-    name: "not-found",
+    name: "error",
     component: ErrorPage,
     meta: {
       layout: {
