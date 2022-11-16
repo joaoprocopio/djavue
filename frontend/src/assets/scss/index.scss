@@ -1,13 +1,5 @@
+// global
+@import "tailwind";
+
+// local
 @import "variables";
-
-@tailwind base;
-
-@layer base {
-  html,
-  body {
-    @apply text-neutral-700;
-  }
-}
-
-@tailwind components;
-@tailwind utilities;
