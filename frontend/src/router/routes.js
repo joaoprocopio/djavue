@@ -1,11 +1,11 @@
-import LandingPage from "~/pages/LandingPage.vue"
+import HomePage from "~/pages/HomePage.vue"
 import ErrorPage from "~/pages/ErrorPage.vue"
 
 const routes = [
   {
     path: "/",
-    name: "landing",
-    component: LandingPage,
+    name: "home",
+    component: HomePage,
   },
   {
     path: "/:pathMatch(.*)*",
