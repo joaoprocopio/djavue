@@ -8,6 +8,6 @@
   import LayoutHandler from "~/app/LayoutHandler.vue"
 </script>
 
-<style>
-  @import "~/assets/css/index.css";
+<style lang="scss">
+  @import "~/assets/scss/index.scss";
 </style>
