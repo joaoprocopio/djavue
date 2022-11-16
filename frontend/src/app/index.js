@@ -4,8 +4,6 @@ import { router } from "~/router"
 import { layoutPlugin, atomsPlugin } from "~/plugins"
 import App from "~/app/App.vue"
 
-import "~/assets/scss/index.scss"
-
 const app = createApp(App)
 const pinia = createPinia()
 
