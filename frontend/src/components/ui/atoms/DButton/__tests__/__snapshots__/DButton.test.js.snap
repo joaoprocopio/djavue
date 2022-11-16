@@ -1,3 +1,0 @@
-// Vitest Snapshot v1
-
-exports[`DButton > Renders like expected. 1`] = `"<button type=\\"button\\" class=\\"storybook-button storybook-button--secondary storybook-button--medium\\"></button>"`;
