@@ -1,6 +1,8 @@
 <template>
   <div>Page not found</div>
-  <div>Sorry, the page {{ fullPath }} could not be found.</div>
+  <div>
+    Sorry, the page <code>{{ fullPath }}</code> could not be found.
+  </div>
   <RouterLink :to="{ name: 'home' }">Go back to the home page</RouterLink>
 </template>
 
