@@ -1,7 +1,6 @@
 def find_user_to_dict_json(user):
     return {
         "id": user.id,
-        "name": user.first_name,
         "username": user.username,
         "is_active": user.is_active,
     }
