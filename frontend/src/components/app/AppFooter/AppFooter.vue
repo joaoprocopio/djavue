@@ -1,5 +1,5 @@
 <template>
-  <footer class="bg-neutral-100 px-8">
+  <footer class="bg-neutral-200 px-8">
     <div class="py-12">
       <RouterLink
         class="font-mono font-bold pb-10 underline"

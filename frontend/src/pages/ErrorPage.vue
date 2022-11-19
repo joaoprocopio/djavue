@@ -4,7 +4,7 @@
     <p class="text-lg mb-6 break-all">
       Sorry, the page
       <span
-        class="px-2 py-1 font-mono bg-neutral-100 font-bold rounded"
+        class="px-2 py-1 font-mono bg-neutral-200 font-bold rounded"
         v-text="path" />
       could not be found.
     </p>

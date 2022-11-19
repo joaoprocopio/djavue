@@ -1,5 +1,5 @@
 <template>
-  <nav class="border-neutral-100 border-b-2 px-8 py-4 mx-auto">
+  <nav class="border-neutral-200 border-b-2 px-8 py-4 mx-auto">
     <div>
       <RouterLink :to="{ name: 'home' }">
         <img
