@@ -1,8 +1,8 @@
 <template>
   <footer class="bg-neutral-200 px-8">
-    <div class="py-12">
+    <div class="flex flex-col mx-auto max-w-screen-xl py-8 h-48">
       <RouterLink
-        class="font-mono font-bold pb-10 underline"
+        class="font-mono font-bold pb-2 underline"
         :to="{ name: 'home' }"
         >d-já vue!
       </RouterLink>
