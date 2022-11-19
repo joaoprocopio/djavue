@@ -5,7 +5,28 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
 
-from user.serializer import user_to_dict_json
+from user.serializer import find_user_to_dict_json, user_to_dict_json
+from user.service import find_user
+
+
+@csrf_exempt
+@require_POST
+def user_find(request):
+    request_body = loads(request.body)
+
+    username = request_body.get("username")
+
+    if username:
+        try:
+            user = find_user(username)
+            user = find_user_to_dict_json(user)
+
+        except:
+            raise JsonResponse({}, status=404)
+
+        return JsonResponse(user, status=200)
+
+    return JsonResponse({}, status=404)
 
 
 @csrf_exempt
