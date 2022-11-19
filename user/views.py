@@ -9,6 +9,13 @@ from django.views.decorators.http import require_POST
 from user.serializer import find_user_to_dict_json, user_to_dict_json
 from user.service import find_user
 
+"""
+TODO:
+adicionar get_object_or_404 pra não ter código tão verboso
+
+from django.shortcuts import get_object_or_404
+"""
+
 
 @csrf_exempt
 @require_POST
