@@ -1,2 +1,2 @@
 export * from "./AppFooter"
-export * from "./AppNavbar"
+export * from "./AppHeader"

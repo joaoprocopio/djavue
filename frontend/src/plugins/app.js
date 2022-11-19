@@ -1,9 +1,9 @@
-import { AppFooter, AppNavbar } from "~/components/app"
+import { AppFooter, AppHeader } from "~/components/app"
 
 const appPlugin = {
   install(Vue) {
     Vue.component("AppFooter", AppFooter)
-    Vue.component("AppNavbar", AppNavbar)
+    Vue.component("AppHeader", AppHeader)
   },
 }
 
