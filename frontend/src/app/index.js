@@ -13,6 +13,6 @@ app.use(layoutPlugin)
 app.use(atomsPlugin)
 app.use(appPlugin)
 
-app.mount("#app")
+app.mount("#__vue")
 
 export { app }
