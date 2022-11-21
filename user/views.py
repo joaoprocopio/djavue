@@ -29,7 +29,7 @@ def user_find(request):
             except User.DoesNotExist:
                 return JsonResponse({}, status=HTTPStatus.NOT_FOUND)
 
-        return JsonResponse({}, status=HTTPStatus.NO_CONTENT)
+        return JsonResponse({}, status=HTTPStatus.BAD_REQUEST)
 
     return JsonResponse({}, status=HTTPStatus.NO_CONTENT)
 
@@ -48,18 +48,18 @@ def user_login(request):
         login(request, user)
         user = user_to_dict_json(user)
 
-        return JsonResponse(user, status=200)
+        return JsonResponse(user, status=HTTPStatus.OK)
 
-    return JsonResponse({}, status=404)
+    return JsonResponse({}, status=HTTPStatus.NOT_FOUND)
 
 
 def user_logout(request):
     if request.user.is_authenticated:
         logout(request)
 
-        return JsonResponse({}, status=200)
+        return JsonResponse({}, status=HTTPStatus.OK)
 
-    return JsonResponse({}, status=404)
+    return JsonResponse({}, status=HTTPStatus.NOT_FOUND)
 
 
 def user_whoami(request):
@@ -74,4 +74,4 @@ def user_whoami(request):
         }
     )
 
-    return JsonResponse(user, status=200)
+    return JsonResponse(user, status=HTTPStatus.OK)
