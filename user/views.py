@@ -1,6 +1,8 @@
+from http import HTTPStatus
 from json import loads
 
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.models import User
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
@@ -18,12 +20,18 @@ def user_find(request):
         username = request_body.get("username")
 
         if username:
-            user = find_user(username)
-            user = find_user_to_dict_json(user)
+            try:
+                user = find_user(username)
+                user = find_user_to_dict_json(user)
 
-            return JsonResponse(user, status=200)
+                return JsonResponse(user, status=HTTPStatus.OK)
 
-    return JsonResponse({}, status=404)
+            except User.DoesNotExist:
+                return JsonResponse({}, status=HTTPStatus.NOT_FOUND)
+
+        return JsonResponse({}, status=HTTPStatus.NO_CONTENT)
+
+    return JsonResponse({}, status=HTTPStatus.NO_CONTENT)
 
 
 @csrf_exempt
