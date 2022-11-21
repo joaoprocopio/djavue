@@ -37,20 +37,27 @@ def user_find(request):
 @csrf_exempt
 @require_POST
 def user_login(request):
-    request_body = loads(request.body)
+    if request.body:
+        request_body = loads(request.body)
 
-    username = request_body.get("username")
-    password = request_body.get("password")
+        username = request_body.get("username")
+        password = request_body.get("password")
 
-    user = authenticate(username=username, password=password)
+        if username and password:
+            user = authenticate(username=username, password=password)
 
-    if user:
-        login(request, user)
-        user = user_to_dict_json(user)
+            try:
+                login(request, user)
+                user = user_to_dict_json(user)
 
-        return JsonResponse(user, status=HTTPStatus.OK)
+                return JsonResponse(user, status=HTTPStatus.OK)
 
-    return JsonResponse({}, status=HTTPStatus.NOT_FOUND)
+            except AttributeError:
+                return JsonResponse({}, status=HTTPStatus.NOT_FOUND)
+
+        return JsonResponse({}, status=HTTPStatus.BAD_REQUEST)
+
+    return JsonResponse({}, status=HTTPStatus.NO_CONTENT)
 
 
 def user_logout(request):
