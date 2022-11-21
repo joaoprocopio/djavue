@@ -1,0 +1,40 @@
+from django.contrib.auth.models import User
+from pytest import raises
+
+from user.service import find_user
+
+
+def test_find_user_with_valid_username(user):
+    username = "username"
+
+    response = find_user(username)
+
+    assert response.id == user.id  # type: ignore
+    assert response.username == user.username  # type: ignore
+
+
+def test_find_user_with_valid_email(user):
+    username = "username@email.com"
+
+    response = find_user(username)
+
+    assert response.id == user.id  # type: ignore
+    assert response.email == user.email  # type: ignore
+
+
+def test_find_user_with_invalid_username(user):
+    with raises(User.DoesNotExist):
+        username = "uname"
+
+        response = find_user(username)
+
+        assert response
+
+
+def test_find_user_with_invalid_email(user):
+    with raises(User.DoesNotExist):
+        username = "uname@email.com"
+
+        response = find_user(username)
+
+        assert response
