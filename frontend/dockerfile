@@ -11,12 +11,13 @@ RUN apt-get update && \
   build-essential
 
 COPY package.json /frontend/
-COPY yarn.lock /frontend/
+COPY package-lock.json /frontend/
 
-RUN yarn install --frozen-lockfile && \
-  yarn cache clean
+RUN npm ci && \
+  npm cache clean --force && \
+  npm cache verify
 
 COPY . /frontend/
 
-RUN yarn build
-CMD yarn start
+RUN npm run build
+CMD npm run start
