@@ -1,20 +1,12 @@
 from json import loads
 
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.models import User
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
 
 from user.serializer import find_user_to_dict_json, user_to_dict_json
 from user.service import find_user
-
-"""
-TODO:
-adicionar get_object_or_404 pra não ter código tão verboso
-
-from django.shortcuts import get_object_or_404
-"""
 
 
 @csrf_exempt
@@ -26,14 +18,10 @@ def user_find(request):
         username = request_body.get("username")
 
         if username:
-            try:
-                user = find_user(username)
-                user = find_user_to_dict_json(user)
+            user = find_user(username)
+            user = find_user_to_dict_json(user)
 
-                return JsonResponse(user, status=200)
-
-            except User.DoesNotExist:
-                raise User.DoesNotExist
+            return JsonResponse(user, status=200)
 
     return JsonResponse({}, status=404)
 
