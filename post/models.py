@@ -11,7 +11,7 @@ class Post(models.Model):
     slug = models.SlugField(max_length=32)
     text = models.TextField()
     created_at = models.DateTimeField(default=timezone.now)
-    posted_at = models.TimeField(null=True)
+    posted_at = models.DateTimeField(null=True)
     is_deleted = models.BooleanField(default=False)
 
     def post(self):
