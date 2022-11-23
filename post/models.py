@@ -8,9 +8,10 @@ from django.utils import timezone
 class Post(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=64)
+    slug = models.SlugField(max_length=32)
     text = models.TextField()
     created_at = models.DateTimeField(default=timezone.now)
-    posted_at = models.TimeField()
+    posted_at = models.TimeField(null=True)
     is_deleted = models.BooleanField(default=False)
 
     def post(self):
