@@ -8,4 +8,4 @@ registerPlugins(app)
 
 app.mount("#__vue")
 
-export { app }
+export default app
