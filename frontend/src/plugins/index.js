@@ -2,7 +2,7 @@ import vuetify from "./vuetify"
 
 import { layoutPlugin } from "./layout"
 
-import { router } from "~/router"
+import router from "~/router"
 import { createPinia } from "pinia"
 
 const pinia = createPinia()
