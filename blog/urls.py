@@ -1,3 +1,7 @@
-# from django.urls import path
+from django.urls import path
 
-urlpatterns = []
+from blog.views import posts_fetch_all
+
+urlpatterns = [
+    path("posts/", posts_fetch_all),
+]
