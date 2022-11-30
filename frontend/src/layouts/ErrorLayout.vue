@@ -1,5 +1,5 @@
 <template>
-  <main class="min-h-[80vh] px-8 grid justify-center">
+  <main>
     <slot />
   </main>
 </template>

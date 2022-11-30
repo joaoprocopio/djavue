@@ -1,11 +1,3 @@
-@tailwind base;
-
-@layer base {
-  html,
-  body {
-    @apply text-neutral-900;
-  }
+* {
+  color: blue !important;
 }
-
-@tailwind components;
-@tailwind utilities;
