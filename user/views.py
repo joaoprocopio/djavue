@@ -70,15 +70,6 @@ def user_logout(request):
 
 
 def user_whoami(request):
-    user = (
-        {
-            "user": user_to_dict_json(request.user),
-            "authenticated": True,
-        }
-        if request.user.is_authenticated
-        else {
-            "authenticated": False,
-        }
-    )
+    user = user_to_dict_json(request.user)
 
     return JsonResponse(user, status=HTTPStatus.OK)
