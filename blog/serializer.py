@@ -1,13 +1,10 @@
+from user.serializer import find_user_to_dict_json
+
+
 def post_to_dict_json(post):
     return {
         "id": post.id,
-        "author": {
-            "id": post.author.id,
-            "name": post.author.get_full_name(),
-            "username": post.author.username,
-            "first_name": post.author.first_name,
-            "last_name": post.author.last_name,
-        },
+        "author": find_user_to_dict_json(post.author),
         "slug": post.slug,
         "title": post.title,
         "text": post.text,
