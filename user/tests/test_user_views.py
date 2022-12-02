@@ -71,7 +71,7 @@ def test_user_whoami_with_logged_user(rf, user):
     response = user_whoami(request)
     response_content = loads(response.content)
 
-    assert response_content.get("authenticated") is True
+    assert response_content.get("is_authenticated") is True
 
 
 def test_user_whoami_with_anonymous_user(rf, anonymous_user):
@@ -80,4 +80,4 @@ def test_user_whoami_with_anonymous_user(rf, anonymous_user):
     response = user_whoami(request)
     response_content = loads(response.content)
 
-    assert response_content.get("authenticated") is False
+    assert response_content.get("is_authenticated") is False
