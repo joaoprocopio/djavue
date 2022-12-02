@@ -12,3 +12,11 @@ def posts_fetch_all(request):
     response = [post_to_dict_json(post) for post in posts]
 
     return JsonResponse({"posts": response})
+
+
+def post_fetch(request, id):
+    post = Post.objects.select_related("author").get(id=id)
+
+    response = post_to_dict_json(post)
+
+    return JsonResponse(response)
