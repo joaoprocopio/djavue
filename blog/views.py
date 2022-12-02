@@ -13,4 +13,4 @@ def posts_fetch_all(request):
 
     response = [post_to_dict_json(post) for post in posts]
 
-    return JsonResponse({"posts": response}, status=HTTPStatus.OK)
+    return JsonResponse({"posts": response})

@@ -24,7 +24,7 @@ def user_find(request):
                 user = find_user(username)
                 user = find_user_to_dict_json(user)
 
-                return JsonResponse(user, status=HTTPStatus.OK)
+                return JsonResponse(user)
 
             except User.DoesNotExist:
                 return JsonResponse({}, status=HTTPStatus.NOT_FOUND)
@@ -50,7 +50,7 @@ def user_login(request):
                 login(request, user)
                 user = user_to_dict_json(user)
 
-                return JsonResponse(user, status=HTTPStatus.OK)
+                return JsonResponse(user)
 
             except AttributeError:
                 return JsonResponse({}, status=HTTPStatus.NOT_FOUND)
@@ -64,7 +64,7 @@ def user_logout(request):
     if request.user.is_authenticated:
         logout(request)
 
-        return JsonResponse({}, status=HTTPStatus.OK)
+        return JsonResponse({})
 
     return JsonResponse({}, status=HTTPStatus.NOT_FOUND)
 
@@ -72,4 +72,4 @@ def user_logout(request):
 def user_whoami(request):
     user = user_to_dict_json(request.user)
 
-    return JsonResponse(user, status=HTTPStatus.OK)
+    return JsonResponse(user)
