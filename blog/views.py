@@ -6,7 +6,7 @@ from blog.serializer import post_to_dict_json
 # Create your views here.
 
 
-def posts_fetch_all(request):
+def posts_fetch(request):
     posts = Post.objects.select_related("author").all().order_by("posted_at").reverse()
 
     response = [post_to_dict_json(post) for post in posts]
