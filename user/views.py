@@ -38,6 +38,9 @@ def user_find(request: WSGIRequest) -> object:
 @csrf_exempt
 @require_POST
 def user_login(request: WSGIRequest) -> object:
+    if request.user.is_authenticated:
+        return JsonResponse({}, status=HTTPStatus.METHOD_NOT_ALLOWED)
+
     if not request.body:
         return JsonResponse({}, status=HTTPStatus.NO_CONTENT)
 
