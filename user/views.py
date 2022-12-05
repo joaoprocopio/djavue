@@ -83,3 +83,6 @@ def user_whoami(request: WSGIRequest) -> object:
 
 def user_register(request: WSGIRequest) -> object:
     return JsonResponse({})
+
+
+# TODO: deixa o usuário editar seu perfil (username/email/senha)
