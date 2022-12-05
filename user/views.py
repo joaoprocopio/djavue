@@ -14,7 +14,7 @@ from user.service import find_user
 
 @csrf_exempt
 @require_POST
-def user_find(request: WSGIRequest) -> object:
+def user_find(request: WSGIRequest) -> JsonResponse:
     if not request.body:
         return JsonResponse({}, status=HTTPStatus.NO_CONTENT)
 
@@ -37,7 +37,7 @@ def user_find(request: WSGIRequest) -> object:
 
 @csrf_exempt
 @require_POST
-def user_login(request: WSGIRequest) -> object:
+def user_login(request: WSGIRequest) -> JsonResponse:
     if request.user.is_authenticated:
         return JsonResponse({}, status=HTTPStatus.METHOD_NOT_ALLOWED)
 
@@ -65,7 +65,7 @@ def user_login(request: WSGIRequest) -> object:
 
 
 @require_GET
-def user_logout(request: WSGIRequest) -> object:
+def user_logout(request: WSGIRequest) -> JsonResponse:
     if request.user.is_authenticated:
         logout(request)
 
@@ -75,7 +75,7 @@ def user_logout(request: WSGIRequest) -> object:
 
 
 @require_GET
-def user_whoami(request: WSGIRequest) -> object:
+def user_whoami(request: WSGIRequest) -> JsonResponse:
     if request.user:
         user = user_to_dict_json(request.user)
 
@@ -84,7 +84,7 @@ def user_whoami(request: WSGIRequest) -> object:
     return JsonResponse({}, status=HTTPStatus.BAD_REQUEST)
 
 
-def user_register(request: WSGIRequest) -> object:
+def user_register(request: WSGIRequest) -> JsonResponse:
     return JsonResponse({})
 
 
