@@ -81,5 +81,5 @@ def user_whoami(request: WSGIRequest) -> object:
     return JsonResponse({}, status=HTTPStatus.BAD_REQUEST)
 
 
-# TODO: deixa o usuário registrar uma conta nova
-# def signup():
+def user_register(request: WSGIRequest) -> object:
+    return JsonResponse({})
