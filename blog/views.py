@@ -3,6 +3,7 @@ from http import HTTPStatus
 from django.core.handlers.wsgi import WSGIRequest
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.http import require_GET
 
 from blog.models import Post
 from blog.serializer import post_to_dict_json
@@ -12,6 +13,7 @@ from blog.service import _get_post, _get_posts
 
 
 @csrf_exempt
+@require_GET
 def blog_posts(request: WSGIRequest) -> object:
     posts = _get_posts()
     posts = [post_to_dict_json(post) for post in posts]
@@ -19,6 +21,7 @@ def blog_posts(request: WSGIRequest) -> object:
     return JsonResponse({"posts": posts})
 
 
+@require_GET
 def blog_post(request: WSGIRequest, id: str) -> object:
     if not id:
         return JsonResponse({}, status=HTTPStatus.NO_CONTENT)
