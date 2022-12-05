@@ -5,7 +5,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-from django.views.decorators.http import require_POST
+from django.views.decorators.http import require_GET, require_POST
 
 from user.serializer import find_user_to_dict_json, user_to_dict_json
 from user.service import find_user
@@ -60,6 +60,7 @@ def user_login(request):
     return JsonResponse({}, status=HTTPStatus.NO_CONTENT)
 
 
+@require_GET
 def user_logout(request):
     if request.user.is_authenticated:
         logout(request)
@@ -69,7 +70,12 @@ def user_logout(request):
     return JsonResponse({}, status=HTTPStatus.NOT_FOUND)
 
 
+@require_GET
 def user_whoami(request):
     user = user_to_dict_json(request.user)
 
     return JsonResponse(user)
+
+
+# TODO: deixa o usuário registrar uma conta nova
+# def signup():
