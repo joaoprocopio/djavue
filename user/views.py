@@ -3,6 +3,7 @@ from json import loads
 
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
+from django.core.handlers.wsgi import WSGIRequest
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_GET, require_POST
@@ -13,68 +14,71 @@ from user.service import find_user
 
 @csrf_exempt
 @require_POST
-def user_find(request):
-    if request.body:
-        request_body = loads(request.body)
+def user_find(request: WSGIRequest) -> object:
+    if not request.body:
+        return JsonResponse({}, status=HTTPStatus.NO_CONTENT)
 
-        username = request_body.get("username")
+    request_body = loads(request.body)
 
-        if username:
-            try:
-                user = find_user(username)
-                user = find_user_to_dict_json(user)
+    username = request_body.get("username")
 
-                return JsonResponse(user)
-
-            except User.DoesNotExist:
-                return JsonResponse({}, status=HTTPStatus.NOT_FOUND)
-
+    if not username:
         return JsonResponse({}, status=HTTPStatus.BAD_REQUEST)
 
-    return JsonResponse({}, status=HTTPStatus.NO_CONTENT)
+    try:
+        user = find_user(username)
+        user = find_user_to_dict_json(user)
+
+        return JsonResponse(user)
+
+    except User.DoesNotExist:
+        return JsonResponse({}, status=HTTPStatus.NOT_FOUND)
 
 
 @csrf_exempt
 @require_POST
-def user_login(request):
-    if request.body:
-        request_body = loads(request.body)
+def user_login(request: WSGIRequest) -> object:
+    if not request.body:
+        return JsonResponse({}, status=HTTPStatus.NO_CONTENT)
 
-        username = request_body.get("username")
-        password = request_body.get("password")
+    request_body = loads(request.body)
 
-        if username and password:
-            user = authenticate(username=username, password=password)
+    username = request_body.get("username")
+    password = request_body.get("password")
 
-            try:
-                login(request, user)
-                user = user_to_dict_json(user)
-
-                return JsonResponse(user)
-
-            except AttributeError:
-                return JsonResponse({}, status=HTTPStatus.NOT_FOUND)
-
+    if not username and password:
         return JsonResponse({}, status=HTTPStatus.BAD_REQUEST)
 
-    return JsonResponse({}, status=HTTPStatus.NO_CONTENT)
+    user = authenticate(username=username, password=password)
+
+    try:
+        login(request, user)
+        user = user_to_dict_json(user)
+
+        return JsonResponse(user)
+
+    except AttributeError:
+        return JsonResponse({}, status=HTTPStatus.NOT_FOUND)
 
 
 @require_GET
-def user_logout(request):
+def user_logout(request: WSGIRequest) -> object:
     if request.user.is_authenticated:
         logout(request)
 
         return JsonResponse({})
 
-    return JsonResponse({}, status=HTTPStatus.NOT_FOUND)
+    return JsonResponse({}, status=HTTPStatus.BAD_REQUEST)
 
 
 @require_GET
-def user_whoami(request):
-    user = user_to_dict_json(request.user)
+def user_whoami(request: WSGIRequest) -> object:
+    if request.user:
+        user = user_to_dict_json(request.user)
 
-    return JsonResponse(user)
+        return JsonResponse(user)
+
+    return JsonResponse({}, status=HTTPStatus.BAD_REQUEST)
 
 
 # TODO: deixa o usuário registrar uma conta nova
