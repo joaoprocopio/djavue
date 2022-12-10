@@ -3,7 +3,7 @@ from json import dumps, loads
 from user.views import user_login, user_logout, user_whoami
 
 
-def test_user_login_with_valid_user(rf, user, session_middleware):
+def test_user_login_with_valid_user(rf, user, anonymous_user, session_middleware):
     request_body = dumps(
         {
             "username": user.username,
@@ -17,6 +17,8 @@ def test_user_login_with_valid_user(rf, user, session_middleware):
         "application/json",
     )
 
+    request.user = anonymous_user
+
     session_middleware.process_request(request)
     response = user_login(request)
     response_content = loads(response.content)
@@ -24,7 +26,7 @@ def test_user_login_with_valid_user(rf, user, session_middleware):
     assert user.id == response_content.get("id")
 
 
-def test_user_login_with_invalid_user(rf, user, session_middleware):
+def test_user_login_with_invalid_user(rf, user, anonymous_user, session_middleware):
     request_body = dumps(
         {
             "username": "",
@@ -37,6 +39,8 @@ def test_user_login_with_invalid_user(rf, user, session_middleware):
         request_body,
         "application/json",
     )
+
+    request.user = anonymous_user
 
     session_middleware.process_request(request)
     response = user_login(request)

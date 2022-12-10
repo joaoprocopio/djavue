@@ -8,7 +8,7 @@ from model_bakery import baker
 
 @pytest.fixture
 def user(db, faker):
-    username = "username"
+    username = faker.user_name()
     password = "password"
     user = baker.make(
         "auth.User",
@@ -24,7 +24,7 @@ def user(db, faker):
 
 
 @pytest.fixture
-def anonymous_user(db):
+def anonymous_user():
     return AnonymousUser()
 
 
