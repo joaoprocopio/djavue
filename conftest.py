@@ -24,6 +24,22 @@ def user(db, faker):
 
 
 @pytest.fixture
+def user_data(faker):
+    username = faker.user_name()
+    password = "password"
+
+    user = {
+        "username": username,
+        "first_name": faker.first_name(),
+        "last_name": faker.last_name(),
+        "email": f"{username}@email.com",
+        "password": password,
+    }
+
+    return user
+
+
+@pytest.fixture
 def anonymous_user():
     return AnonymousUser()
 

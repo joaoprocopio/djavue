@@ -1,7 +1,7 @@
 from django.contrib.auth.models import User
 from pytest import raises
 
-from user.service import find_user
+from user.service import create_user, find_user
 
 
 def test_find_user_with_valid_username(user):
@@ -38,3 +38,9 @@ def test_find_user_with_invalid_email(user):
         response = find_user(username)
 
         assert response
+
+
+def test_create_user(db, user_data):
+    created_user = create_user(**user_data)
+
+    assert created_user.username == user_data.get("username")
