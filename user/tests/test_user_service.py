@@ -5,7 +5,7 @@ from user.service import find_user
 
 
 def test_find_user_with_valid_username(user):
-    username = "username"
+    username = user.username
 
     response = find_user(username)
 
@@ -14,7 +14,7 @@ def test_find_user_with_valid_username(user):
 
 
 def test_find_user_with_valid_email(user):
-    username = "username@email.com"
+    username = user.email
 
     response = find_user(username)
 
