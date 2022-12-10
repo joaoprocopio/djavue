@@ -18,9 +18,9 @@ def user_find(request: WSGIRequest) -> JsonResponse:
     if not request.body:
         return JsonResponse({}, status=HTTPStatus.NO_CONTENT)
 
-    request_body = loads(request.body)
+    body = loads(request.body)
 
-    username = request_body.get("username")
+    username = body.get("username")
 
     if not username:
         return JsonResponse({}, status=HTTPStatus.BAD_REQUEST)
@@ -44,10 +44,10 @@ def user_login(request: WSGIRequest) -> JsonResponse:
     if not request.body:
         return JsonResponse({}, status=HTTPStatus.NO_CONTENT)
 
-    request_body = loads(request.body)
+    body = loads(request.body)
 
-    username = request_body.get("username")
-    password = request_body.get("password")
+    username = body.get("username")
+    password = body.get("password")
 
     if not username and password:
         return JsonResponse({}, status=HTTPStatus.BAD_REQUEST)
