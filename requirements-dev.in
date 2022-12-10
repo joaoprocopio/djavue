@@ -3,15 +3,11 @@
 pytest
 pytest-cov
 pytest-django
-
 model-bakery
-
 Faker
-
 coverage
 pip-tools
 flake8
 black
 isort
-
 ipython

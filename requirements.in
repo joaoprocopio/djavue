@@ -1,9 +1,7 @@
 psycopg2
-
 gunicorn
-
 django
 django-cors-headers
 django_extensions
-
 python-decouple
+pydantic
