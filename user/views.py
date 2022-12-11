@@ -7,9 +7,11 @@ from django.core.handlers.wsgi import WSGIRequest
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_GET, require_POST
+from pydantic import ValidationError
 
+from user.forms import UserRegister
 from user.serializer import find_user_to_dict_json, user_to_dict_json
-from user.service import find_user
+from user.service import create_user, find_user
 
 
 @csrf_exempt
@@ -64,6 +66,24 @@ def user_login(request: WSGIRequest) -> JsonResponse:
         return JsonResponse({}, status=HTTPStatus.NOT_FOUND)
 
 
+@csrf_exempt
+@require_POST
+def user_register(request: WSGIRequest) -> JsonResponse:
+    if not request.body:
+        return JsonResponse({}, status=HTTPStatus.NO_CONTENT)
+
+    try:
+        body = UserRegister.parse_raw(request.body)
+        body = body.dict()
+        user = create_user(**body)
+        user = user_to_dict_json(user)
+
+        return JsonResponse(user)
+
+    except ValidationError:
+        return JsonResponse({}, status=HTTPStatus.BAD_REQUEST)
+
+
 @require_GET
 def user_logout(request: WSGIRequest) -> JsonResponse:
     if request.user.is_authenticated:
@@ -82,10 +102,6 @@ def user_whoami(request: WSGIRequest) -> JsonResponse:
         return JsonResponse(user)
 
     return JsonResponse({}, status=HTTPStatus.BAD_REQUEST)
-
-
-def user_register(request: WSGIRequest) -> JsonResponse:
-    return JsonResponse({})
 
 
 # TODO: deixa o usuário editar seu perfil (username/email/senha)

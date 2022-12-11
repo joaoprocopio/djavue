@@ -1,7 +1,7 @@
 from pydantic import BaseModel, validator
 
 
-class SignUpUser(BaseModel):
+class UserRegister(BaseModel):
     username: str
     email: str
     password: str
@@ -9,13 +9,13 @@ class SignUpUser(BaseModel):
     last_name: str
 
     @validator("username")
-    def validate_username(cls, username):
+    def username_validator(cls, username):
         return username
 
     @validator("email")
-    def validate_email(cls, email):
+    def email_validator(cls, email):
         return email
 
     @validator("password")
-    def validate_password(cls, password):
+    def password_validator(cls, password):
         return password
