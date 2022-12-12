@@ -4,7 +4,6 @@ from django.core.handlers.wsgi import WSGIRequest
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_GET
-from pydantic import Json
 
 from blog.models import Post
 from blog.serializer import post_to_dict_json
