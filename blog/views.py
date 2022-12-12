@@ -4,6 +4,7 @@ from django.core.handlers.wsgi import WSGIRequest
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_GET
+from pydantic import Json
 
 from blog.models import Post
 from blog.serializer import post_to_dict_json
@@ -28,6 +29,10 @@ def blog_post(request: WSGIRequest, id: str) -> JsonResponse:
 
     try:
         post = get_post(id=id)
+
+        if not post.author.pk == request.user.pk:
+            return JsonResponse({}, status=HTTPStatus.METHOD_NOT_ALLOWED)
+
         post = post_to_dict_json(post)
 
         return JsonResponse(post)
