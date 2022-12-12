@@ -1,15 +1,13 @@
-import vuetify from "./vuetify"
+import { vuetifyPlugin } from "./vuetify"
 
 import { layoutPlugin } from "./layout"
 
-import router from "~/router"
-import { createPinia } from "pinia"
-
-const pinia = createPinia()
+import { piniaPlugin } from "./pinia"
+import { routerPlugin } from "~/router"
 
 export function registerPlugins(app) {
-  app.use(pinia)
-  app.use(router)
-  app.use(vuetify)
+  app.use(piniaPlugin)
+  app.use(routerPlugin)
+  app.use(vuetifyPlugin)
   app.use(layoutPlugin)
 }
