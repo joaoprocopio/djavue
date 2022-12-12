@@ -23,10 +23,7 @@ def blog_posts(request: WSGIRequest) -> JsonResponse:
 
 @require_GET
 def blog_post(request: WSGIRequest, id: str) -> JsonResponse:
-    if not id:
-        return JsonResponse({}, status=HTTPStatus.NO_CONTENT)
-
-    if not id.isdigit():
+    if not id or id.isdigit():
         return JsonResponse({}, status=HTTPStatus.BAD_REQUEST)
 
     try:
