@@ -7,7 +7,7 @@ from django.views.decorators.http import require_GET
 
 from blog.models import Post
 from blog.serializer import post_to_dict_json
-from blog.service import _get_post, _get_posts
+from blog.service import get_post, get_posts
 
 # Create your views here.
 
@@ -15,7 +15,7 @@ from blog.service import _get_post, _get_posts
 @csrf_exempt
 @require_GET
 def blog_posts(request: WSGIRequest) -> JsonResponse:
-    posts = _get_posts()
+    posts = get_posts()
     posts = [post_to_dict_json(post) for post in posts]
 
     return JsonResponse({"posts": posts})
@@ -30,7 +30,7 @@ def blog_post(request: WSGIRequest, id: str) -> JsonResponse:
         return JsonResponse({}, status=HTTPStatus.BAD_REQUEST)
 
     try:
-        post = _get_post(id=id)
+        post = get_post(id=id)
         post = post_to_dict_json(post)
 
         return JsonResponse(post)
