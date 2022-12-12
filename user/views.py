@@ -72,6 +72,9 @@ def user_register(request: WSGIRequest) -> JsonResponse:
     if not request.body:
         return JsonResponse({}, status=HTTPStatus.NO_CONTENT)
 
+    if request.user.is_authenticated:
+        return JsonResponse({}, status=HTTPStatus.METHOD_NOT_ALLOWED)
+
     try:
         body = UserRegister.parse_raw(request.body)
         body = body.dict()
