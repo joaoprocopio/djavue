@@ -20,8 +20,8 @@ if you don't have `pyenv` already installed, check this [guide](https://github.c
 ### `virtual environment`
 
 ```bash
-pyenv install 3.10.4
-pyenv virtualenv 3.10.4 djavue
+pyenv install 3.11.0
+pyenv virtualenv 3.11.0 djavue
 pip install -r requirements-dev.txt
 ```
 
