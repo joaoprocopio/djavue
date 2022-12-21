@@ -4,6 +4,10 @@ creator: [tonylampada](https://github.com/tonylampada)
 
 based on: [evolutio/djavue](https://github.com/evolutio/djavue)
 
+## front-end flow
+
+![illustration](https://i.imgur.com/0G35d7t.png)
+
 ## `backend` set-up
 
 ### `pyenv`
