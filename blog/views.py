@@ -28,10 +28,6 @@ def blog_get_post_by_id(request: WSGIRequest, id: str) -> JsonResponse:
 
     try:
         post = get_post(id=id)
-
-        if not post.author.pk == request.user.pk:
-            return JsonResponse({}, status=HTTPStatus.METHOD_NOT_ALLOWED)
-
         post = post_to_dict_json(post)
 
         return JsonResponse(post)
