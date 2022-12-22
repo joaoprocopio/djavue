@@ -5,7 +5,6 @@ def post_to_dict_json(post):
     return {
         "id": post.id,
         "author": find_user_to_dict_json(post.author),
-        "slug": post.slug,
         "title": post.title,
         "text": post.text,
         "created_at": post.created_at,

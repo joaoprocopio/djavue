@@ -1046,12 +1046,12 @@
       "locked": false,
       "fontSize": 16,
       "fontFamily": 1,
-      "text": "link:\nhttps://localhost:3000/post/:slug\n\nbate em:\n/api/blog/post/<id>\n\ncarrega o post",
+      "text": "link:\nhttps://localhost:3000/post/:id\n\nbate em:\n/api/blog/post/<id>\n\ncarrega o post",
       "baseline": 134,
       "textAlign": "center",
       "verticalAlign": "top",
       "containerId": null,
-      "originalText": "link:\nhttps://localhost:3000/post/:slug\n\nbate em:\n/api/blog/post/<id>\n\ncarrega o post"
+      "originalText": "link:\nhttps://localhost:3000/post/:id\n\nbate em:\n/api/blog/post/<id>\n\ncarrega o post"
     },
     {
       "type": "text",
