@@ -22,7 +22,7 @@ def blog_home_page(request: WSGIRequest) -> JsonResponse:
 
 
 @require_GET
-def blog_get_post_by_id(request: WSGIRequest, id: str) -> JsonResponse:
+def blog_get_post_by_id(request: WSGIRequest, id: int) -> JsonResponse:
     if not id:
         return JsonResponse({}, status=HTTPStatus.BAD_REQUEST)
 
@@ -36,7 +36,9 @@ def blog_get_post_by_id(request: WSGIRequest, id: str) -> JsonResponse:
         return JsonResponse({}, status=HTTPStatus.NOT_FOUND)
 
 
-# TODO: retorna posts por usuário
+def blog_get_post_by_user_id(request: WSGIRequest, user_id: int) -> JsonResponse:
+    return JsonResponse({})
+
 
 # TODO: deixa o usuário criar um post
 
