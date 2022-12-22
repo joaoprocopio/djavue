@@ -1,8 +1,8 @@
 from django.urls import path
 
-from blog.views import blog_home_page, blog_post
+from blog.views import blog_get_post_by_id, blog_home_page
 
 urlpatterns = [
     path("posts/home_page/", blog_home_page),
-    path("posts/<int:id>", blog_post),
+    path("posts/<int:id>", blog_get_post_by_id),
 ]

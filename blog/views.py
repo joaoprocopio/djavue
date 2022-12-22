@@ -22,7 +22,7 @@ def blog_home_page(request: WSGIRequest) -> JsonResponse:
 
 
 @require_GET
-def blog_post(request: WSGIRequest, id: str) -> JsonResponse:
+def blog_get_post_by_id(request: WSGIRequest, id: str) -> JsonResponse:
     if not id:
         return JsonResponse({}, status=HTTPStatus.BAD_REQUEST)
 
