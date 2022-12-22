@@ -14,7 +14,7 @@ from blog.service import get_post, get_posts
 
 @csrf_exempt
 @require_GET
-def blog_posts(request: WSGIRequest) -> JsonResponse:
+def blog_home_page(request: WSGIRequest) -> JsonResponse:
     posts = get_posts()
     posts = [post_to_dict_json(post) for post in posts]
 
