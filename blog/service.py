@@ -1,7 +1,7 @@
 from blog.models import Post
 
 
-def get_posts():
+def get_home_page_posts():
     return Post.objects.select_related("author").all().order_by("posted_at").reverse()
 
 
