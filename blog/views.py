@@ -7,7 +7,7 @@ from django.views.decorators.http import require_GET
 
 from blog.models import Post
 from blog.serializer import post_to_dict_json
-from blog.service import get_home_page_posts, get_post
+from blog.service import get_post, get_posts
 
 # Create your views here.
 
@@ -15,7 +15,7 @@ from blog.service import get_home_page_posts, get_post
 @csrf_exempt
 @require_GET
 def blog_home_page(request: WSGIRequest) -> JsonResponse:
-    posts = get_home_page_posts()
+    posts = get_posts().order_by("posted_at").reverse()
     posts = [post_to_dict_json(post) for post in posts]
 
     return JsonResponse({"posts": posts})
