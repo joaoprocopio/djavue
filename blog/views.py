@@ -21,6 +21,22 @@ def blog_home_page(request: WSGIRequest) -> JsonResponse:
     return JsonResponse({"posts": posts})
 
 
+@csrf_exempt
+@require_GET
+def blog_get_posts_by_author_id(request: WSGIRequest, author_id: int) -> JsonResponse:
+    if not author_id:
+        return JsonResponse({}, status=HTTPStatus.BAD_REQUEST)
+
+    try:
+        posts = get_posts(author_id=author_id)
+        posts = [post_to_dict_json(post) for post in posts]
+
+        return JsonResponse({"posts": posts})
+
+    except Post.DoesNotExist:
+        return JsonResponse({}, status=HTTPStatus.NOT_FOUND)
+
+
 @require_GET
 def blog_get_post_by_id(request: WSGIRequest, id: int) -> JsonResponse:
     if not id:
@@ -31,20 +47,6 @@ def blog_get_post_by_id(request: WSGIRequest, id: int) -> JsonResponse:
         post = post_to_dict_json(post)
 
         return JsonResponse(post)
-
-    except Post.DoesNotExist:
-        return JsonResponse({}, status=HTTPStatus.NOT_FOUND)
-
-
-def blog_get_posts_by_author_id(request: WSGIRequest, author_id: int) -> JsonResponse:
-    if not author_id:
-        return JsonResponse({}, status=HTTPStatus.BAD_REQUEST)
-
-    try:
-        posts = get_posts(author_id=author_id)
-        posts = [post_to_dict_json(post) for post in posts]
-
-        return JsonResponse({"posts": posts})
 
     except Post.DoesNotExist:
         return JsonResponse({}, status=HTTPStatus.NOT_FOUND)
