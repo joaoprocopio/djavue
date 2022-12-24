@@ -1,5 +1,6 @@
 from http import HTTPStatus
 
+from django.contrib.auth.models import User
 from django.core.handlers.wsgi import WSGIRequest
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
@@ -8,6 +9,7 @@ from django.views.decorators.http import require_GET
 from blog.models import Post
 from blog.serializer import post_to_dict_json
 from blog.service import get_post, get_posts
+from user.service import _get_user as get_user
 
 # Create your views here.
 
@@ -28,12 +30,13 @@ def blog_get_posts_by_author_id(request: WSGIRequest, author_id: int) -> JsonRes
         return JsonResponse({}, status=HTTPStatus.BAD_REQUEST)
 
     try:
-        posts = get_posts(author_id=author_id)
+        author = get_user(id=author_id)
+        posts = get_posts(author=author)
         posts = [post_to_dict_json(post) for post in posts]
 
         return JsonResponse({"posts": posts})
 
-    except Post.DoesNotExist:
+    except User.DoesNotExist:
         return JsonResponse({}, status=HTTPStatus.NOT_FOUND)
 
 
