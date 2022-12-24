@@ -6,12 +6,12 @@
 </template>
 
 <script setup>
-import { $axios } from '~/api';
-import { ref } from 'vue';
+  import { $axios } from "~/api"
+  import { ref } from "vue"
 
-const path = ref("")
+  const path = ref("")
 
-const fetch = () => {
-  $axios.get(path.value).then((r) => console.log(r))
-}
+  const fetch = () => {
+    $axios.get(path.value).then((r) => console.log(r))
+  }
 </script>
