@@ -12,6 +12,6 @@
   const path = ref("")
 
   const fetch = () => {
-    $axios.get(path.value).then((r) => console.log(r))
+    $axios.get(path.value).then((r) => console.log(r.data))
   }
 </script>
