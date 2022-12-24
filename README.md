@@ -6,7 +6,7 @@ based on: [evolutio/djavue](https://github.com/evolutio/djavue)
 
 ## front-end flow
 
-![illustration](https://i.imgur.com/0G35d7t.png)
+![illustration](https://i.imgur.com/9IRG3B7.png)
 
 ## `backend` set-up
 
