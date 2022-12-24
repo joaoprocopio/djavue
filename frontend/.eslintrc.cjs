@@ -4,7 +4,7 @@ module.exports = {
   root: true,
   extends: [
     "eslint:recommended",
-    "plugin:vue/vue3-essential",
+    "plugin:vue/vue3-recommended",
     "plugin:prettier/recommended",
     "@vue/eslint-config-prettier",
     "plugin:storybook/recommended",
