@@ -1,7 +1,9 @@
 from http import HTTPStatus
+from json import loads
 
 from django.contrib.auth.models import User
 from django.core.handlers.wsgi import WSGIRequest
+from django.core.paginator import Paginator
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_GET
@@ -17,8 +19,18 @@ from user.service import _get_user as get_user
 @csrf_exempt
 @require_GET
 def blog_home_page(request: WSGIRequest) -> JsonResponse:
-    posts = get_posts().order_by("posted_at").reverse()
-    posts = [post_to_dict_json(post) for post in posts]
+    if not request.body:
+        return JsonResponse({}, status=HTTPStatus.NO_CONTENT)
+
+    body = loads(request.body)
+
+    per_page = body.get("paginator").get("per_page")
+    page = body.get("paginator").get("page")
+
+    qs = get_posts().order_by("posted_at").reverse()
+    paginator = Paginator(object_list=qs, per_page=per_page)
+    page = paginator.get_page(page)
+    posts = [post_to_dict_json(post) for post in page]
 
     return JsonResponse({"posts": posts})
 
