@@ -5,5 +5,5 @@ from blog.views import blog_get_post_by_id, blog_get_posts_by_author_id, blog_ho
 urlpatterns = [
     path("home_page/", blog_home_page),
     path("author/<int:author_id>/", blog_get_posts_by_author_id),
-    path("id/<int:id>/", blog_get_post_by_id),
+    path("posts/<int:id>/", blog_get_post_by_id),
 ]
