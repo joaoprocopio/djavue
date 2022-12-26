@@ -49,16 +49,6 @@ def blog_get_posts_by_author_id(request: WSGIRequest, author_id: int) -> JsonRes
         return JsonResponse({}, status=HTTPStatus.BAD_REQUEST)
 
     try:
-        """
-        Procura primeiro o usuário,
-        e se encontrar o usuário
-        continua a chamada da função.
-        O problema disso é o fato de
-        estar acontecendo duas queries
-        (uma pro usuário, e outra para os posts).
-        O ponto positivo, é que se não encontrar
-        o usuário, a função já para.
-        """
         author = get_user(id=author_id)
         posts = get_posts(author=author)
         posts = [post_to_dict_json(post) for post in posts]
