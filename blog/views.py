@@ -24,8 +24,15 @@ def blog_home_page(request: WSGIRequest) -> JsonResponse:
 
     body = loads(request.body)
 
-    per_page = body.get("paginator").get("per_page")
-    page = body.get("paginator").get("page")
+    form = body.get("paginator")
+
+    if not form:
+        per_page = 15
+        page = 1
+
+    else:
+        per_page = form.get("per_page")
+        page = form.get("page")
 
     qs = get_posts().order_by("posted_at").reverse()
     paginator = Paginator(object_list=qs, per_page=per_page)
