@@ -105,6 +105,3 @@ def user_whoami(request: WSGIRequest) -> JsonResponse:
         return JsonResponse(user)
 
     return JsonResponse({}, status=HTTPStatus.BAD_REQUEST)
-
-
-# TODO: deixa o usuário editar seu perfil (username/email/senha)
