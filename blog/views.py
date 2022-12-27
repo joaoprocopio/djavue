@@ -47,6 +47,9 @@ def blog_get_posts(request, author_id):
         posts = get_posts(author_id=author_id)
         posts = [post_to_dict_json(post) for post in posts]
 
+        if not posts:
+            return JsonResponse({}, status=HTTPStatus.NO_CONTENT)
+
         return JsonResponse({"posts": posts})
 
     except User.DoesNotExist:
