@@ -14,6 +14,7 @@ class Post(models.Model):
 
     def post(self):
         self.posted_at = timezone.now()
+        self.save()
 
     def __str__(self):
         return self.title
