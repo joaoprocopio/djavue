@@ -32,10 +32,10 @@ def blog_home_page(request):
     per_page = params.get("per_page")
     page = params.get("page")
 
-    qs = get_posts().order_by("published_at").reverse()
-    paginator = Paginator(qs, per_page)
-    page = paginator.get_page(page)
-    posts = [post_to_dict_json(post) for post in page]
+    posts = get_posts().order_by("published_at").reverse()
+    pages = Paginator(posts, per_page)
+    posts = pages.get_page(page)
+    posts = [post_to_dict_json(post) for post in posts]
 
     return JsonResponse({"posts": posts})
 
