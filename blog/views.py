@@ -18,16 +18,19 @@ from user.service import _get_user as get_user
 @csrf_exempt
 @require_GET
 def blog_home_page(request):
-    body = loads(request.body)
+    params = {
+        "paginator": {
+            "per_page": 15,
+            "page": 1,
+        }
+    }
 
-    form = body.get("paginator")
+    if request.body:
+        params = loads(request.body)
 
-    per_page = 15
-    page = 1
-
-    if ("per_page" and "page") in form.keys():
-        per_page = form.get("per_page")
-        page = form.get("page")
+    form = params.get("paginator")
+    per_page = form.get("per_page")
+    page = form.get("page")
 
     qs = get_posts().order_by("posted_at").reverse()
     paginator = Paginator(qs, per_page)
