@@ -10,7 +10,6 @@ from django.views.decorators.http import require_GET, require_POST
 from blog.models import Post
 from blog.serializer import post_to_dict_json
 from blog.service import get_post, get_posts
-from user.service import _get_user as get_user
 
 
 @csrf_exempt
@@ -45,8 +44,7 @@ def blog_get_posts(request, author_id):
         return JsonResponse({}, status=HTTPStatus.BAD_REQUEST)
 
     try:
-        author = get_user(id=author_id)
-        posts = get_posts(author=author)
+        posts = get_posts(author_id=author_id)
         posts = [post_to_dict_json(post) for post in posts]
 
         return JsonResponse({"posts": posts})
