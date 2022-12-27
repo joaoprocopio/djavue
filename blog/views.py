@@ -12,8 +12,6 @@ from blog.serializer import post_to_dict_json
 from blog.service import get_post, get_posts
 from user.service import _get_user as get_user
 
-# Create your views here.
-
 
 @csrf_exempt
 @require_GET

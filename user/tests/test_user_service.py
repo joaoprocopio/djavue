@@ -9,8 +9,8 @@ def test_find_user_with_valid_username(user):
 
     response = find_user(username)
 
-    assert response.id == user.id  # type: ignore
-    assert response.username == user.username  # type: ignore
+    assert response.id == user.id
+    assert response.username == user.username
 
 
 def test_find_user_with_valid_email(user):
@@ -18,8 +18,8 @@ def test_find_user_with_valid_email(user):
 
     response = find_user(username)
 
-    assert response.id == user.id  # type: ignore
-    assert response.email == user.email  # type: ignore
+    assert response.id == user.id
+    assert response.email == user.email
 
 
 def test_find_user_with_invalid_username(user):
