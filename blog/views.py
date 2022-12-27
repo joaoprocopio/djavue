@@ -18,9 +18,6 @@ from user.service import _get_user as get_user
 @csrf_exempt
 @require_GET
 def blog_home_page(request):
-    if not request.body:
-        return JsonResponse({}, status=HTTPStatus.NO_CONTENT)
-
     body = loads(request.body)
 
     form = body.get("paginator")
