@@ -26,11 +26,10 @@ def blog_home_page(request: WSGIRequest) -> JsonResponse:
 
     form = body.get("paginator")
 
-    if not form:
-        per_page = 15
-        page = 1
+    per_page = 15
+    page = 1
 
-    else:
+    if form:
         per_page = form.get("per_page")
         page = form.get("page")
 
