@@ -3,7 +3,6 @@ from json import loads
 
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
-from django.core.handlers.wsgi import WSGIRequest
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_GET, require_POST
@@ -16,7 +15,7 @@ from user.service import create_user, find_user
 
 @csrf_exempt
 @require_POST
-def user_find(request: WSGIRequest) -> JsonResponse:
+def user_find(request):
     if not request.body:
         return JsonResponse({}, status=HTTPStatus.NO_CONTENT)
 
@@ -39,7 +38,7 @@ def user_find(request: WSGIRequest) -> JsonResponse:
 
 @csrf_exempt
 @require_POST
-def user_login(request: WSGIRequest) -> JsonResponse:
+def user_login(request):
     if request.user.is_authenticated:
         return JsonResponse({}, status=HTTPStatus.METHOD_NOT_ALLOWED)
 
@@ -68,7 +67,7 @@ def user_login(request: WSGIRequest) -> JsonResponse:
 
 @csrf_exempt
 @require_POST
-def user_register(request: WSGIRequest) -> JsonResponse:
+def user_register(request):
     if not request.body:
         return JsonResponse({}, status=HTTPStatus.NO_CONTENT)
 
@@ -88,7 +87,7 @@ def user_register(request: WSGIRequest) -> JsonResponse:
 
 
 @require_GET
-def user_logout(request: WSGIRequest) -> JsonResponse:
+def user_logout(request):
     if request.user.is_authenticated:
         logout(request)
 
@@ -98,7 +97,7 @@ def user_logout(request: WSGIRequest) -> JsonResponse:
 
 
 @require_GET
-def user_whoami(request: WSGIRequest) -> JsonResponse:
+def user_whoami(request):
     if request.user:
         user = user_to_dict_json(request.user)
 
