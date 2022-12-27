@@ -40,7 +40,7 @@ def blog_home_page(request):
 
 @csrf_exempt
 @require_GET
-def blog_get_posts_by_author_id(request, author_id):
+def blog_get_posts(request, author_id):
     if not author_id:
         return JsonResponse({}, status=HTTPStatus.BAD_REQUEST)
 
@@ -56,7 +56,7 @@ def blog_get_posts_by_author_id(request, author_id):
 
 
 @require_GET
-def blog_get_post_by_id(request, id):
+def blog_get_post(request, id):
     if not id:
         return JsonResponse({}, status=HTTPStatus.BAD_REQUEST)
 
