@@ -2,7 +2,6 @@ from http import HTTPStatus
 from json import loads
 
 from django.contrib.auth.models import User
-from django.core.handlers.wsgi import WSGIRequest
 from django.core.paginator import Paginator
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
@@ -18,7 +17,7 @@ from user.service import _get_user as get_user
 
 @csrf_exempt
 @require_GET
-def blog_home_page(request: WSGIRequest) -> JsonResponse:
+def blog_home_page(request):
     if not request.body:
         return JsonResponse({}, status=HTTPStatus.NO_CONTENT)
 
@@ -43,7 +42,7 @@ def blog_home_page(request: WSGIRequest) -> JsonResponse:
 
 @csrf_exempt
 @require_GET
-def blog_get_posts_by_author_id(request: WSGIRequest, author_id: int) -> JsonResponse:
+def blog_get_posts_by_author_id(request, author_id):
     if not author_id:
         return JsonResponse({}, status=HTTPStatus.BAD_REQUEST)
 
@@ -59,7 +58,7 @@ def blog_get_posts_by_author_id(request: WSGIRequest, author_id: int) -> JsonRes
 
 
 @require_GET
-def blog_get_post_by_id(request: WSGIRequest, id: int) -> JsonResponse:
+def blog_get_post_by_id(request, id):
     if not id:
         return JsonResponse({}, status=HTTPStatus.BAD_REQUEST)
 
