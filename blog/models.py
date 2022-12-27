@@ -10,10 +10,10 @@ class Post(models.Model):
     title = models.CharField(max_length=64)
     text = models.TextField()
     created_at = models.DateTimeField(default=timezone.now)
-    posted_at = models.DateTimeField(null=True, blank=True)
+    published_at = models.DateTimeField(null=True, blank=True)
 
-    def post(self):
-        self.posted_at = timezone.now()
+    def publish(self):
+        self.published_at = timezone.now()
         self.save()
 
     def __str__(self):

@@ -8,5 +8,5 @@ def post_to_dict_json(post):
         "title": post.title,
         "text": post.text,
         "created_at": post.created_at,
-        "posted_at": post.posted_at,
+        "published_at": post.published_at,
     }
