@@ -34,7 +34,7 @@ def blog_home_page(request: WSGIRequest) -> JsonResponse:
         page = form.get("page")
 
     qs = get_posts().order_by("posted_at").reverse()
-    paginator = Paginator(object_list=qs, per_page=per_page)
+    paginator = Paginator(qs, per_page)
     page = paginator.get_page(page)
     posts = [post_to_dict_json(post) for post in page]
 
