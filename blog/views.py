@@ -19,18 +19,18 @@ from user.service import _get_user as get_user
 @require_GET
 def blog_home_page(request):
     params = {
-        "paginator": {
-            "per_page": 15,
-            "page": 1,
-        }
+        "per_page": 15,
+        "page": 1,
     }
 
     if request.body:
         params = loads(request.body)
 
-    form = params.get("paginator")
-    per_page = form.get("per_page")
-    page = form.get("page")
+    if ("per_page" and "page") not in params.keys():
+        return JsonResponse({}, status=HTTPStatus.BAD_REQUEST)
+
+    per_page = params.get("per_page")
+    page = params.get("page")
 
     qs = get_posts().order_by("posted_at").reverse()
     paginator = Paginator(qs, per_page)
