@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from django.core.paginator import Paginator
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-from django.views.decorators.http import require_GET
+from django.views.decorators.http import require_GET, require_POST
 
 from blog.models import Post
 from blog.serializer import post_to_dict_json
@@ -70,9 +70,15 @@ def blog_get_post_by_id(request, id):
         return JsonResponse({}, status=HTTPStatus.NOT_FOUND)
 
 
-# TODO: deixa o usuário criar um post
+@require_POST
+def blog_create_post(request):
+    return JsonResponse({})
 
-# TODO: deixa o usuário publicar um post criado
+
+@require_POST
+def blog_publish_post(request):
+    return JsonResponse({})
+
 
 # TODO: deixa o usuário deletar um post
 
