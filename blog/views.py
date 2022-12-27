@@ -29,7 +29,7 @@ def blog_home_page(request: WSGIRequest) -> JsonResponse:
     per_page = 15
     page = 1
 
-    if form:
+    if ("per_page" and "page") in form.keys():
         per_page = form.get("per_page")
         page = form.get("page")
 
