@@ -4,7 +4,7 @@ from email_validator import EmailNotValidError, validate_email
 from pydantic import BaseModel, validator
 
 
-class UserRegister(BaseModel):
+class UserForm(BaseModel):
     username: str
     email: str
     password: str

@@ -8,7 +8,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_GET, require_POST
 from pydantic import ValidationError
 
-from user.forms import UserRegister
+from user.forms import UserForm
 from user.serializer import find_user_to_dict_json, user_to_dict_json
 from user.service import create_user, find_user
 
@@ -75,7 +75,7 @@ def user_register(request):
         return JsonResponse({}, status=HTTPStatus.METHOD_NOT_ALLOWED)
 
     try:
-        body = UserRegister.parse_raw(request.body)
+        body = UserForm.parse_raw(request.body)
         body = body.dict()
         user = create_user(**body)
         user = user_to_dict_json(user)
