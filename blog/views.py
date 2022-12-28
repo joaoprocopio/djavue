@@ -40,11 +40,27 @@ def blog_home_page(request):
 @csrf_exempt
 @require_GET
 def blog_get_posts(request, author_id):
+    params = {
+        "per_page": 15,
+        "page": 1,
+    }
+
     if not author_id:
         return JsonResponse({}, status=HTTPStatus.BAD_REQUEST)
 
+    if request.body:
+        params = loads(request.body)
+
+    if ("per_page" and "page") not in params.keys():
+        return JsonResponse({}, status=HTTPStatus.BAD_REQUEST)
+
+    per_page = params.get("per_page")
+    page = params.get("page")
+
     try:
         posts = get_posts(author_id=author_id)
+        pages = Paginator(posts, per_page)
+        posts = pages.get_page(page)
         posts = [post_to_dict_json(post) for post in posts]
 
         if not posts:
