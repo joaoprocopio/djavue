@@ -1,7 +1,6 @@
 from http import HTTPStatus
 from json import loads
 
-from django.contrib.auth.models import User
 from django.core.paginator import Paginator
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
@@ -30,6 +29,10 @@ def blog_home_page(request):
     page = params.get("page")
 
     posts = get_posts().order_by("published_at").reverse()
+
+    if not posts:
+        return JsonResponse({}, status=HTTPStatus.NO_CONTENT)
+
     pages = Paginator(posts, per_page)
     posts = pages.get_page(page)
     posts = [post_to_dict_json(post) for post in posts]
@@ -57,19 +60,16 @@ def blog_get_posts(request, author_id):
     per_page = params.get("per_page")
     page = params.get("page")
 
-    try:
-        posts = get_posts(author_id=author_id)
-        pages = Paginator(posts, per_page)
-        posts = pages.get_page(page)
-        posts = [post_to_dict_json(post) for post in posts]
+    posts = get_posts(author_id=author_id)
 
-        if not posts:
-            return JsonResponse({}, status=HTTPStatus.NO_CONTENT)
+    if not posts:
+        return JsonResponse({}, status=HTTPStatus.NO_CONTENT)
 
-        return JsonResponse({"posts": posts})
+    pages = Paginator(posts, per_page)
+    posts = pages.get_page(page)
+    posts = [post_to_dict_json(post) for post in posts]
 
-    except User.DoesNotExist:
-        return JsonResponse({}, status=HTTPStatus.NOT_FOUND)
+    return JsonResponse({"posts": posts})
 
 
 @require_GET
