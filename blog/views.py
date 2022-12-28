@@ -3,7 +3,6 @@ from json import loads
 
 from django.core.paginator import Paginator
 from django.http import JsonResponse
-from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_GET, require_POST
 
 from blog.models import Post
@@ -11,7 +10,6 @@ from blog.serializer import post_to_dict_json
 from blog.service import get_post, get_posts
 
 
-@csrf_exempt
 @require_GET
 def blog_home_page(request):
     params = {
@@ -40,7 +38,6 @@ def blog_home_page(request):
     return JsonResponse({"posts": posts})
 
 
-@csrf_exempt
 @require_GET
 def blog_get_posts(request, author_id):
     params = {
