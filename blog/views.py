@@ -3,11 +3,14 @@ from json import loads
 
 from django.core.paginator import Paginator
 from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_GET, require_POST
+from pydantic import ValidationError
 
+from blog.forms import PostForm
 from blog.models import Post
 from blog.serializer import post_to_dict_json
-from blog.service import get_post, get_posts
+from blog.service import create_post, get_post, get_posts
 
 
 @require_GET
@@ -86,7 +89,22 @@ def blog_get_post(request, id):
 
 @require_POST
 def blog_create_post(request):
-    return JsonResponse({})
+    if not request.body:
+        return JsonResponse({}, status=HTTPStatus.NO_CONTENT)
+
+    if not request.user.is_authenticated:
+        return JsonResponse({}, status=HTTPStatus.METHOD_NOT_ALLOWED)
+
+    try:
+        body = PostForm.parse_raw(request.body)
+        body = body.dict()
+        post = create_post(**body)
+        post = post_to_dict_json(post)
+
+        return JsonResponse(post)
+
+    except ValidationError:
+        return JsonResponse({}, status=HTTPStatus.BAD_REQUEST)
 
 
 @require_POST
