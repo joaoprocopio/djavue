@@ -1,7 +1,9 @@
 from http import HTTPStatus
 from json import loads
 
+from django.contrib.auth.models import User
 from django.core.paginator import Paginator
+from django.db.utils import IntegrityError
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_GET, require_POST
@@ -11,6 +13,7 @@ from blog.forms import PostForm
 from blog.models import Post
 from blog.serializer import post_to_dict_json
 from blog.service import create_post, get_post, get_posts
+from user.service import get_user
 
 
 @require_GET
@@ -88,6 +91,7 @@ def blog_get_post(request, id):
 
 
 @require_POST
+@csrf_exempt
 def blog_create_post(request):
     if not request.body:
         return JsonResponse({}, status=HTTPStatus.NO_CONTENT)
@@ -98,12 +102,23 @@ def blog_create_post(request):
     try:
         body = PostForm.parse_raw(request.body)
         body = body.dict()
-        post = create_post(**body)
+        author = get_user(id=body.get("author_id"))
+        post = create_post(
+            author=author,
+            title=body.get("title"),
+            text=body.get("text"),
+        )
         post = post_to_dict_json(post)
 
         return JsonResponse(post)
 
     except ValidationError:
+        return JsonResponse({}, status=HTTPStatus.BAD_REQUEST)
+
+    except IntegrityError:
+        return JsonResponse({}, status=HTTPStatus.BAD_REQUEST)
+
+    except User.DoesNotExist:
         return JsonResponse({}, status=HTTPStatus.BAD_REQUEST)
 
 

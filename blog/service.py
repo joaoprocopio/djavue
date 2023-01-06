@@ -1,8 +1,12 @@
 from blog.models import Post
 
 
-def create_post(**kwargs):
-    post = Post.objects.select_related("author").create(**kwargs)
+def create_post(author, title, text):
+    post = Post.objects.select_related("author").create(
+        author=author,
+        title=title,
+        text=text,
+    )
 
     return post
 
