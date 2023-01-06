@@ -1,6 +1,10 @@
 from django.contrib.auth.models import User
 
 
+def get_user(**kwargs):
+    return User.objects.get(**kwargs)
+
+
 def find_user(username):
     user = _find_user_query(username)
 
