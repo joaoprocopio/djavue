@@ -2,7 +2,7 @@ from http import HTTPStatus
 from json import loads
 
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.models import User
+from django.core.exceptions import ObjectDoesNotExist
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_GET, require_POST
@@ -32,7 +32,7 @@ def user_find(request):
 
         return JsonResponse(user)
 
-    except User.DoesNotExist:
+    except ObjectDoesNotExist:
         return JsonResponse({}, status=HTTPStatus.NOT_FOUND)
 
 

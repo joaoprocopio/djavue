@@ -1,7 +1,7 @@
 from http import HTTPStatus
 from json import loads
 
-from django.contrib.auth.models import User
+from django.core.exceptions import ObjectDoesNotExist
 from django.core.paginator import Paginator
 from django.db.utils import IntegrityError
 from django.http import JsonResponse
@@ -118,8 +118,8 @@ def blog_create_post(request):
     except IntegrityError:
         return JsonResponse({}, status=HTTPStatus.BAD_REQUEST)
 
-    except User.DoesNotExist:
-        return JsonResponse({}, status=HTTPStatus.BAD_REQUEST)
+    except ObjectDoesNotExist:
+        return JsonResponse({"não": "existe"}, status=HTTPStatus.BAD_REQUEST)
 
 
 @require_POST

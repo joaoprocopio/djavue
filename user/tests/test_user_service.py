@@ -1,4 +1,4 @@
-from django.contrib.auth.models import User
+from django.core.exceptions import ObjectDoesNotExist
 from pytest import raises
 
 from user.service import create_user, find_user
@@ -23,7 +23,7 @@ def test_find_user_with_valid_email(user):
 
 
 def test_find_user_with_invalid_username(user):
-    with raises(User.DoesNotExist):
+    with raises(ObjectDoesNotExist):
         username = "uname"
 
         response = find_user(username)
@@ -32,7 +32,7 @@ def test_find_user_with_invalid_username(user):
 
 
 def test_find_user_with_invalid_email(user):
-    with raises(User.DoesNotExist):
+    with raises(ObjectDoesNotExist):
         username = "uname@email.com"
 
         response = find_user(username)
