@@ -119,7 +119,7 @@ def blog_create_post(request):
         return JsonResponse({}, status=HTTPStatus.BAD_REQUEST)
 
     except ObjectDoesNotExist:
-        return JsonResponse({"não": "existe"}, status=HTTPStatus.BAD_REQUEST)
+        return JsonResponse({}, status=HTTPStatus.BAD_REQUEST)
 
 
 @require_POST
