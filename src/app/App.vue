@@ -1,7 +1,9 @@
 <template>
-  <component :is="$route?.meta?.layout?.name ?? DefaultLayoutName">
-    <RouterView />
-  </component>
+  <VApp>
+    <component :is="$route?.meta?.layout?.name ?? DefaultLayoutName">
+      <RouterView />
+    </component>
+  </VApp>
 </template>
 
 <script setup>
