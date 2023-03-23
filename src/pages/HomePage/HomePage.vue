@@ -1,9 +1,3 @@
 <template>
-  <div>I am a Home Page</div>
+  <div>HomePage</div>
 </template>
-
-<script setup>
-  import { $axios } from "~/api"
-
-  $axios.get("/tasks/")
-</script>

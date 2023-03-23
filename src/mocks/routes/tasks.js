@@ -6,7 +6,13 @@ export const tasks = function (server) {
       this.namespace = "/api/tasks/"
 
       this.get("/", function (schema) {
-        return new Response(200, {}, schema.tasks.all())
+        return new Response(
+          200,
+          {},
+          {
+            tasks: this.serialize(schema.tasks.all()),
+          }
+        )
       })
     },
   })
