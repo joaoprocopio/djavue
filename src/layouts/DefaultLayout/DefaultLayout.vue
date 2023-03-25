@@ -1,5 +1,7 @@
 <template>
-  <main>
+  <VAppBar border elevation="0" />
+  <VMain>
     <slot />
-  </main>
+  </VMain>
+  <VFooter />
 </template>
