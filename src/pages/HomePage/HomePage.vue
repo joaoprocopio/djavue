@@ -1,3 +1,7 @@
 <template>
-  <div>HomePage</div>
+  <AppPlaceholder> </AppPlaceholder>
 </template>
+
+<script setup>
+  import { AppPlaceholder } from "~/components"
+</script>
