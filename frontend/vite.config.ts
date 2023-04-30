@@ -1,18 +1,15 @@
-import { fileURLToPath, URL } from "node:url"
+import { alias, plugins } from "./configs"
+
 import { defineConfig } from "vite"
 
-import vue from "@vitejs/plugin-vue"
-
 export default defineConfig({
-  plugins: [vue()],
+  plugins,
   server: {
-    host: "0.0.0.0",
+    host: true,
     port: 3000,
   },
-  publicDir: "./src/public",
   resolve: {
-    alias: {
-      "@": fileURLToPath(new URL("./src", import.meta.url)),
-    },
+    alias,
   },
+  publicDir: "./src/public",
 })
