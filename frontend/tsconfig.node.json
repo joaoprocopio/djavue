@@ -2,12 +2,21 @@
   "extends": "@vue/tsconfig/tsconfig.node.json",
   "include": [
     "configs/**/*",
-    "vite.config.*",
-    "vitest.config.*",
-    "cypress.config.*",
-    "playwright.config.*"
+    "tests/**/*",
+    "vite.config.ts",
+    "vitest.config.ts",
+    "playwright.config.ts",
   ],
   "compilerOptions": {
     "composite": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "./*"
+      ],
+      "~/*": [
+        "./src/*"
+      ]
+    }
   }
 }
