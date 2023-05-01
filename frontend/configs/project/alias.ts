@@ -1,6 +1,8 @@
-import { fileURLToPath, URL } from "node:url"
+import { join, resolve } from "node:path"
+
+const BASE_URL = join(__dirname, "..", "..")
 
 export const alias = {
-  "@": fileURLToPath(new URL("../../", import.meta.url)),
-  "~": fileURLToPath(new URL("../../src", import.meta.url)),
+  "@": resolve(BASE_URL),
+  "~": resolve(BASE_URL, "src"),
 }

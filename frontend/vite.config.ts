@@ -1,4 +1,4 @@
-import { alias, plugins } from "./configs"
+import { plugins, alias } from "./configs/project"
 
 import { defineConfig } from "vite"
 
