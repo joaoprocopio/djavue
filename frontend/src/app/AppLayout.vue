@@ -1,5 +1,5 @@
 <template>
-  <VApp>
+  <VApp :theme="$theme.current">
     <component :is="$route?.meta?.layout ?? DefaultLayoutName">
       <slot />
     </component>
@@ -7,5 +7,8 @@
 </template>
 
 <script setup lang="ts">
+  import { useThemeStore } from "~/stores"
   import { DefaultLayoutName } from "@/configs/constants"
+
+  const $theme = useThemeStore()
 </script>

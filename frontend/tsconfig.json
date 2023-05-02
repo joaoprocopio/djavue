@@ -9,7 +9,7 @@
     "types": [],
     "module": "ESNext",
     "target": "ESNext",
-    "moduleResolution": "bundler",
+    "moduleResolution": "node",
     "resolveJsonModule": true,
     "jsx": "preserve",
     "noImplicitThis": true,
