@@ -1,3 +1,5 @@
+// @ts-nocheck
+// Disabled because the current status of TypeScript support in Vuetify isn't too good
 import "vuetify/styles"
 
 import { createVuetify } from "vuetify"

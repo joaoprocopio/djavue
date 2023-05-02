@@ -5,6 +5,7 @@
       "DOM",
       "DOM.Iterable"
     ],
+    "typeRoots": [],
     "types": [],
     "module": "ESNext",
     "target": "ESNext",
@@ -29,5 +30,12 @@
         "./src/*"
       ]
     }
-  }
+  },
+  "exclude": [
+    "node_modules",
+  ],
+  "include": [
+    "**/*.vue",
+    "**/*.ts",
+  ]
 }
