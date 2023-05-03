@@ -8,7 +8,7 @@
 
 <script setup lang="ts">
   import { useThemeStore } from "~/stores"
-  import { DefaultLayoutName } from "@/config/constants/layouts"
+  import { DefaultLayoutName } from "@/constants/layouts"
 
   const $theme = useThemeStore()
 </script>
