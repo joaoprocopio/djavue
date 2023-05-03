@@ -1,6 +1,6 @@
 import { createApp } from "vue"
 
-import { env } from "@/configs/project/env"
+import { env } from "@/config/project/env"
 import { installPlugins } from "~/plugins"
 import App from "./App.vue"
 

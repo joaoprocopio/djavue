@@ -1,5 +1,5 @@
-import { plugins } from "./configs/project/plugins"
-import { alias } from "./configs/project/alias"
+import { plugins } from "./config/project/plugins"
+import { alias } from "./config/project/alias"
 
 import { defineConfig } from "vite"
 
