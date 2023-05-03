@@ -19,7 +19,7 @@
     "composite": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./config/*"],
+      "@/*": ["./lib/*"],
       "~/*": ["./src/*"]
     }
   },
