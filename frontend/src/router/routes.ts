@@ -1,6 +1,6 @@
 import type { RouteRecordRaw } from "vue-router"
 
-import { LandingPageName } from "@/configs/constants"
+import { LandingPageName } from "@/configs/constants/pages"
 
 export const routes: Readonly<RouteRecordRaw[]> = [
   {

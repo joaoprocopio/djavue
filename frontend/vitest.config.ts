@@ -5,11 +5,13 @@ import viteConfig from "./vite.config"
 
 export default mergeConfig(
   viteConfig,
-  defineConfig({
-    test: {
-      environment: "jsdom",
-      exclude: [...configDefaults.exclude, "./tests/e2e/**"],
-      include: [...configDefaults.include, "./tests/unit/**/*"],
-    },
+  defineConfig(() => {
+    return {
+      test: {
+        environment: "jsdom",
+        exclude: [...configDefaults.exclude, "./tests/e2e/**"],
+        include: [...configDefaults.include, "./tests/unit/**/*"],
+      },
+    }
   })
 )
