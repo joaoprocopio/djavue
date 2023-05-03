@@ -6,6 +6,7 @@ import { defineConfig } from "vite"
 export default defineConfig(() => {
   return {
     plugins,
+    envPrefix: "_",
     server: {
       host: true,
       port: 3000,
