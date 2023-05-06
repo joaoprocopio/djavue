@@ -1,1 +1,3 @@
-export * from "./LandingPage"
+import LandingPage from "./LandingPage.vue"
+
+export { LandingPage }
