@@ -11,7 +11,7 @@
 
 <script lang="ts">
   interface Props {
-    contentClass: string
+    contentClass?: string
   }
 </script>
 

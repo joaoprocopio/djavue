@@ -1,3 +1,4 @@
-import DefaultLayout from "./DefaultLayout.vue"
+import AppLayout from "./AppLayout.vue"
+import LandingLayout from "./LandingLayout.vue"
 
-export { DefaultLayout }
+export { AppLayout, LandingLayout }
