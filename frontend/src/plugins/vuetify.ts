@@ -10,7 +10,6 @@ export const vuetifyPlugin = createVuetify({
   defaults: {
     global: {
       elevation: "0",
-      variant: "text",
     },
   },
   components,
