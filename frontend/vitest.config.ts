@@ -9,8 +9,7 @@ export default mergeConfig(
     return {
       test: {
         environment: "jsdom",
-        exclude: [...configDefaults.exclude, "./tests/e2e/**"],
-        include: [...configDefaults.include, "./tests/unit/**/*"],
+        exclude: [...configDefaults.exclude, "./e2e/**"],
       },
     }
   })
