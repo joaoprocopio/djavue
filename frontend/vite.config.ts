@@ -2,6 +2,7 @@ import { plugins } from "./lib/project/plugins"
 import { alias } from "./lib/project/alias"
 
 import { defineConfig } from "vite"
+import { configDefaults } from "vitest/config"
 
 export default defineConfig(() => {
   return {
@@ -13,6 +14,10 @@ export default defineConfig(() => {
     },
     resolve: {
       alias,
+    },
+    test: {
+      environment: "jsdom",
+      exclude: [...configDefaults.exclude, "./e2e/**"],
     },
   }
 })

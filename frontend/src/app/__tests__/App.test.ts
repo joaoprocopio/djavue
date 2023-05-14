@@ -1,12 +1,29 @@
-import { default as component } from "../App.vue"
+import component from "../App.vue"
 
-import { mount } from "@vue/test-utils"
-import { describe, it, expect } from "vitest"
+import { useThemeStore } from "~/stores"
 
-const App = mount(component)
+import { render } from "@testing-library/vue"
+import { createTestingPinia } from "@pinia/testing"
+import { describe, it, expect, vi } from "vitest"
+
+const App = render(component, {
+  global: {
+    plugins: [
+      createTestingPinia({
+        createSpy: vi.fn(),
+      }),
+    ],
+  },
+})
+
+const $theme = useThemeStore()
 
 describe("App", () => {
-  it("Theme changing", () => {
-    expect(App).toBeTruthy()
+  it("Theme renders - light", () => {
+    $theme.current = "light"
+
+    // TODO: consertar o vitest não resolvendo os componentes
+
+    expect(App).toMatchSnapshot()
   })
 })
