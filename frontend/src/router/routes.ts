@@ -1,7 +1,7 @@
 import type { RouteRecordRaw } from "vue-router"
 
 import { LandingLayoutName } from "@/constants/layouts"
-import { LandingPageName } from "@/constants/pages"
+import { LandingPageName, ErrorPageName } from "@/constants/pages"
 
 export const routes: Readonly<RouteRecordRaw[]> = [
   {
@@ -13,5 +13,16 @@ export const routes: Readonly<RouteRecordRaw[]> = [
       },
     },
     component: () => import("~/pages").then(({ LandingPage }) => LandingPage),
+  },
+  {
+    path: "/:pathMatch(.*)*",
+    name: ErrorPageName,
+    meta: {
+      layout: {
+        name: LandingLayoutName,
+        isSimple: true,
+      },
+    },
+    component: () => import("~/pages").then(({ ErrorPage }) => ErrorPage),
   },
 ]
