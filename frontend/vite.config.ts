@@ -16,6 +16,7 @@ export default defineConfig(() => {
       alias,
     },
     test: {
+      globals: true,
       environment: "jsdom",
       exclude: [...configDefaults.exclude, "./e2e/**"],
     },

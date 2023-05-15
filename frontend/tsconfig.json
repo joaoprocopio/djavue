@@ -1,28 +1,17 @@
 {
-  "compilerOptions": {
-    "lib": ["ES2020", "DOM", "DOM.Iterable"],
-    "typeRoots": [],
-    "types": [],
-    "module": "ESNext",
-    "target": "ESNext",
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "jsx": "preserve",
-    "noImplicitThis": true,
-    "strict": true,
-    "isolatedModules": true,
-    "verbatimModuleSyntax": true,
-    "useDefineForClassFields": true,
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "skipLibCheck": true,
-    "composite": true,
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["./lib/*"],
-      "~/*": ["./src/*"]
+  "files": [],
+  "exclude": [
+    "node_modules"
+  ],
+  "references": [
+    {
+      "path": "./tsconfig.node.json"
+    },
+    {
+      "path": "./tsconfig.app.json"
+    },
+    {
+      "path": "./tsconfig.vitest.json"
     }
-  },
-  "exclude": ["node_modules"],
-  "include": ["**/*.vue", "**/*.ts"]
+  ],
 }
