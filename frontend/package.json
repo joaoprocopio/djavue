@@ -20,7 +20,6 @@
     "vuetify": "^3.2.4"
   },
   "devDependencies": {
-    "@pinia/testing": "^0.1.0",
     "@playwright/test": "^1.33.0",
     "@rushstack/eslint-patch": "^1.2.0",
     "@testing-library/vue": "^7.0.0",
