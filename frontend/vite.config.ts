@@ -22,7 +22,11 @@ export default defineConfig({
   },
   test: {
     globals: true,
+    deps: {
+      inline: ["vuetify"],
+    },
     environment: "jsdom",
+    setupFiles: "./lib/vitest/setup.ts",
     exclude: [...configDefaults.exclude, "./e2e/**"],
   },
 })
