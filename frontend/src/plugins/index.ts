@@ -1,10 +1,10 @@
 import type { App } from "vue"
 
-import { routerPlugin } from "~/router"
-import { vuetifyPlugin } from "./vuetify"
-import { piniaPlugin } from "./pinia"
-import { layoutPlugin } from "./layout"
+import { router } from "~/router"
+import { pinia } from "./pinia"
+import { vuetify } from "./vuetify"
+import { layouts } from "./layouts"
 
-export const installPlugins = (app: App) => {
-  app.use(piniaPlugin).use(vuetifyPlugin).use(routerPlugin).use(layoutPlugin)
+export const install = (app: App) => {
+  app.use(pinia).use(router).use(vuetify).use(layouts)
 }

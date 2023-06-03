@@ -1,10 +1,18 @@
-import { ref } from "vue"
+import { computed, ref } from "vue"
 import { defineStore } from "pinia"
 
+const THEME = {
+  light: "light",
+  dark: "dark",
+}
+
 export const useThemeStore = defineStore("theme", () => {
-  const current = ref("light")
+  const current = ref(THEME.light)
 
-  const toggleTheme = () => (current.value = current.value === "light" ? "dark" : "light")
+  const theme = computed(() => current.value)
 
-  return { current, toggleTheme }
+  const toggleTheme = () =>
+    (current.value = current.value === THEME.light ? THEME.dark : THEME.light)
+
+  return { current, theme, toggleTheme }
 })

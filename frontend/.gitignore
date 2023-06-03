@@ -25,8 +25,6 @@ coverage
 
 # nyc test coverage
 .nyc_output
-playwright-report/
-test-results/
 
 # Grunt intermediate storage (https://gruntjs.com/creating-plugins#storing-task-files)
 .grunt
@@ -131,5 +129,6 @@ dist
 .yarn/install-state.gz
 .pnp.*
 
-# npm
-package-lock.json
+# Playwright
+test-results/
+playwright-report/

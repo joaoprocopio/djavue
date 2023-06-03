@@ -7,7 +7,7 @@
         djavue
       </RouterLink>
     </template>
-    <template v-if="!$route.meta.layout?.isSimple" #append>
+    <template #append>
       <VBtn append-icon="login" color="primary" class="mr-4">Login</VBtn>
     </template>
   </VAppBar>
@@ -17,5 +17,5 @@
 </template>
 
 <script setup lang="ts">
-  import { LandingPageName } from "@/constants/pages"
+  import { LandingPageName } from "@/lib/constants/pages"
 </script>

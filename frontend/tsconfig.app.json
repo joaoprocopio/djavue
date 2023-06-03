@@ -1,25 +1,14 @@
 {
   "extends": "@vue/tsconfig/tsconfig.dom.json",
-  "include": [
-    "env.d.ts",
-    "lib/**/*",
-    "src/**/*",
-    "src/**/*.vue"
-  ],
-  "exclude": [
-    "src/**/__tests__/*"
-  ],
+  "include": ["env.d.ts", "lib/**/*", "src/**/*", "src/**/*.vue"],
+  "exclude": ["src/**/__tests__/*"],
   "compilerOptions": {
-    "moduleResolution": "node",
     "composite": true,
+    "types": ["vite/client"],
     "baseUrl": ".",
     "paths": {
-      "@/*": [
-        "lib/*"
-      ],
-      "~/*": [
-        "src/*"
-      ]
+      "@/*": ["./*"],
+      "~/*": ["./src/*"]
     }
   }
 }

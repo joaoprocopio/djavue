@@ -1,32 +1,24 @@
-// TODO: quebrar test para vitest config
-
-import { plugins } from "./lib/project/plugins"
-import { alias } from "./lib/project/alias"
+import { fileURLToPath, URL } from "node:url"
 
 import { defineConfig } from "vite"
-import { configDefaults } from "vitest/config"
+import vue from "@vitejs/plugin-vue"
 
+// https://vitejs.dev/config/
 export default defineConfig({
-  plugins,
-  resolve: {
-    alias,
-  },
-  envPrefix: "_",
-  server: {
-    host: true,
-    port: 3000,
-  },
+  plugins: [vue()],
   preview: {
-    host: true,
+    host: false,
     port: 3001,
   },
-  test: {
-    globals: true,
-    deps: {
-      inline: ["vuetify"],
+  server: {
+    host: false,
+    port: 3000,
+  },
+  envPrefix: "_",
+  resolve: {
+    alias: {
+      "@": fileURLToPath(new URL("./", import.meta.url)),
+      "~": fileURLToPath(new URL("./src", import.meta.url)),
     },
-    environment: "jsdom",
-    setupFiles: "./lib/vitest/setup.ts",
-    exclude: [...configDefaults.exclude, "./e2e/**"],
   },
 })

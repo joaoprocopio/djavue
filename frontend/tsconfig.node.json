@@ -1,14 +1,9 @@
 {
-  "extends": "@tsconfig/node16/tsconfig.json",
-  "include": [
-    "lib/**/*",
-    "*.config.ts",
-  ],
+  "extends": "@tsconfig/node18/tsconfig.json",
+  "include": ["*.config.ts"],
   "compilerOptions": {
     "composite": true,
     "module": "ESNext",
-    "types": [
-      "node"
-    ]
+    "types": ["node"]
   }
 }

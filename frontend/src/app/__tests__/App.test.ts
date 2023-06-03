@@ -1,31 +1,31 @@
-import { createPinia, setActivePinia } from "pinia"
 import { mount, type VueWrapper } from "@vue/test-utils"
+
+// import { useThemeStore } from "~/stores"
 
 import App from "../App.vue"
 
-let wrapper: VueWrapper
-const render = () => mount(App)
+let component: VueWrapper
 
-beforeAll(() => {
-  global.ResizeObserver = class ResizeObserver {
-    observe() {}
-    unobserve() {}
-    disconnect() {}
-  }
-})
+const render = () => mount(App)
 
 describe("App", () => {
   beforeEach(() => {
-    setActivePinia(createPinia())
-
-    wrapper = render()
+    component = render()
   })
 
   afterEach(() => {
-    wrapper.unmount()
+    component.unmount()
   })
 
-  it("Theme renders - light", () => {
-    expect(wrapper.html()).toMatchSnapshot()
+  test("It renders correctly", () => {
+    expect(component.html()).toMatchSnapshot()
+  })
+
+  test("It renders with a theme - light", () => {
+    expect(component.classes()).toContain("v-theme--light")
+  })
+
+  test("It renders with a theme - dark", () => {
+    expect(component.classes()).toContain("v-theme--dark")
   })
 })

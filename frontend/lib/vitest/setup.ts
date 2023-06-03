@@ -1,7 +1,16 @@
 import { config } from "@vue/test-utils"
+import { createTestingPinia } from "@pinia/testing"
 
-import { routerPlugin } from "~/router"
-import { vuetifyPlugin } from "~/plugins/vuetify"
-import { layoutPlugin } from "~/plugins/layout"
+import { router } from "~/router"
+import { vuetify } from "~/plugins/vuetify"
+import { layouts } from "~/plugins/layouts"
 
-config.global.plugins = [vuetifyPlugin, routerPlugin, layoutPlugin]
+config.global.plugins = [createTestingPinia({ stubActions: false }), router, vuetify, layouts]
+
+beforeAll(() => {
+  global.ResizeObserver = class ResizeObserver {
+    observe() {}
+    unobserve() {}
+    disconnect() {}
+  }
+})

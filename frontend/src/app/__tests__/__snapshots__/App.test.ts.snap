@@ -1,9 +1,9 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`App > Theme renders - light 1`] = `
+exports[`App > It renders correctly 1`] = `
 "<div class=\\"v-application v-theme--light v-layout v-layout--full-height v-locale--is-ltr\\" style=\\"z-index: 1000;\\">
   <div class=\\"v-application__wrap\\">
-    <header class=\\"v-toolbar v-toolbar--density-default elevation-0 v-theme--light v-locale--is-ltr v-app-bar\\" style=\\"top: 0px; z-index: 1006; transform: translateY(0%); position: fixed; transition: none; left: 0px; width: calc(100% - 0px - 0px);\\">
+    <header class=\\"v-toolbar v-toolbar--density-default v-theme--light v-locale--is-ltr v-app-bar\\" style=\\"top: 0px; z-index: 1006; transform: translateY(0%); position: fixed; transition: none; left: 0px; width: calc(100% - 0px - 0px);\\">
       <!---->
       <div class=\\"v-toolbar__content\\" style=\\"height: 64px;\\">
         <!---->
@@ -18,7 +18,7 @@ exports[`App > Theme renders - light 1`] = `
     <main class=\\"v-main\\" style=\\"--v-layout-left: 0px; --v-layout-right: 0px; --v-layout-top: 64px; --v-layout-bottom: 56px; transition: none;\\">
       <!---->
     </main>
-    <header class=\\"v-bottom-navigation v-bottom-navigation--active v-theme--light v-bottom-navigation--density-default elevation-0\\" style=\\"bottom: 0px; z-index: 1004; transform: translateY(0%); position: fixed; height: 56px; transition: none; left: 0px; width: calc(100% - 0px - 0px);\\">
+    <header class=\\"v-bottom-navigation v-bottom-navigation--active v-theme--light v-bottom-navigation--density-default\\" style=\\"bottom: 0px; z-index: 1004; transform: translateY(0%); position: fixed; height: 56px; transition: none; left: 0px; width: calc(100% - 0px - 0px);\\">
       <!---->
     </header>
   </div>
