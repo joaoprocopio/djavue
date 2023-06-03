@@ -1,6 +1,7 @@
 {
   "extends": "@tsconfig/node16/tsconfig.json",
   "include": [
+    "lib/**/*",
     "*.config.ts",
   ],
   "compilerOptions": {
