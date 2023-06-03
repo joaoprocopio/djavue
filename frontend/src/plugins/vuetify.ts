@@ -6,7 +6,7 @@ import { aliases, md } from "vuetify/iconsets/md"
 export const vuetifyPlugin = createVuetify({
   defaults: {
     global: {
-      elevation: "0",
+      elevation: 0,
     },
   },
   icons: {

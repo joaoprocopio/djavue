@@ -1,18 +1,31 @@
+import { createPinia, setActivePinia } from "pinia"
+import { mount, type VueWrapper } from "@vue/test-utils"
+
 import App from "../App.vue"
 
-import { render } from "@testing-library/vue"
+let wrapper: VueWrapper
+const render = () => mount(App)
 
-const component = (options = {}) =>
-  render(App, {
-    ...options,
-  })
+beforeAll(() => {
+  global.ResizeObserver = class ResizeObserver {
+    observe() {}
+    unobserve() {}
+    disconnect() {}
+  }
+})
 
 describe("App", () => {
+  beforeEach(() => {
+    setActivePinia(createPinia())
+
+    wrapper = render()
+  })
+
+  afterEach(() => {
+    wrapper.unmount()
+  })
+
   it("Theme renders - light", () => {
-    const { html } = component()
-
-    // TODO: Unknown file extension ".css"
-
-    expect(html()).toMatchSnapshot()
+    expect(wrapper.html()).toMatchSnapshot()
   })
 })
