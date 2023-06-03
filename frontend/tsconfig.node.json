@@ -2,8 +2,6 @@
   "extends": "@tsconfig/node16/tsconfig.json",
   "include": [
     "*.config.ts",
-    "lib/**/*",
-    "src/**/*",
   ],
   "compilerOptions": {
     "composite": true,

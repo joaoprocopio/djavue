@@ -1,4 +1,2 @@
-import LandingPage from "./LandingPage.vue"
-import ErrorPage from "./ErrorPage.vue"
-
-export { LandingPage, ErrorPage }
+export { default as LandingPage } from "./LandingPage.vue"
+export { default as ErrorPage } from "./ErrorPage.vue"
