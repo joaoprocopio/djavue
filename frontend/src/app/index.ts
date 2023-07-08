@@ -1,11 +1,11 @@
-import { createApp } from 'vue'
+import { createApp } from "vue"
 
-import App from './App.vue'
+import App from "./App.vue"
 
-import { install } from '~/plugins'
+import { install } from "~/plugins"
 
 const app = createApp(App)
 
 install(app)
 
-app.mount('#__vue')
+app.mount("#__vue")

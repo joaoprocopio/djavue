@@ -1,7 +1,7 @@
-import { type App } from 'vue'
+import { type App } from "vue"
 
-import { pinia } from './pinia'
-import { vuetify } from './vuetify'
+import { pinia } from "./pinia"
+import { vuetify } from "./vuetify"
 
 export const install = (app: App) => {
   app.use(pinia)
