@@ -1,7 +1,0 @@
-import {} from "axios"
-
-export const reject = (error) => {
-  Promise.reject(error)
-
-  return error.response
-}
