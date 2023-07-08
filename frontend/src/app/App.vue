@@ -1,3 +1,5 @@
 <template>
-  <div>hello world!</div>
+  <VApp>
+    <RouterView />
+  </VApp>
 </template>
