@@ -1,5 +1,7 @@
 import { type RouteRecordRaw } from "vue-router"
 
+import { LandingPageName } from "@/lib/constants/pages"
+
 const lazyLayout = (layout: string) => () =>
   // @ts-ignore
   import(`~/layouts`).then(({ [layout]: Layout }) => Layout)
@@ -14,6 +16,7 @@ export const routes: Readonly<RouteRecordRaw[]> = [
     component: lazyLayout("LandingLayout"),
     children: [
       {
+        name: LandingPageName,
         path: "/",
         component: lazyPage("LandingPage")
       }

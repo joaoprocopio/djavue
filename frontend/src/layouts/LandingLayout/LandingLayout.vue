@@ -1,7 +1,14 @@
 <template>
-  <VAppBar>header</VAppBar>
+  <VAppBar>
+    <RouterLink :to="{ name: LandingPageName }">
+      <VIcon icon="forum"></VIcon>
+    </RouterLink>
+  </VAppBar>
   <VMain>
     <RouterView />
   </VMain>
-  <VFooter>footer</VFooter>
 </template>
+
+<script setup lang="ts">
+  import { LandingPageName } from "@/lib/constants/pages"
+</script>
