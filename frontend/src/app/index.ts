@@ -2,6 +2,6 @@ import { createApp } from 'vue'
 
 import App from './App.vue'
 
-const app = createApp(App)
+export const app = createApp(App)
 
 app.mount('#__vue')
