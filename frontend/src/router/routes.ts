@@ -19,6 +19,10 @@ export const routes: Readonly<RouteRecordRaw[]> = [
         name: LandingPageName,
         path: "/",
         component: lazyPage("LandingPage")
+      },
+      {
+        path: "/:pathMatch(.*)*",
+        component: lazyPage("ErrorPage")
       }
     ]
   }
