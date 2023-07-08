@@ -10,8 +10,9 @@
     "test:e2e": "playwright test",
     "build-only": "vite build",
     "type-check": "vue-tsc --noEmit -p tsconfig.vitest.json --composite false",
-    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
-    "format": "prettier --write src/"
+    "lint": "eslint . --ext .vue,.ts,.cjs --ignore-path .gitignore",
+    "check": "prettier . --check --ignore-path .gitignore",
+    "format": "npm run lint -- --fix && npm run check -- --write"
   },
   "dependencies": {
     "pinia": "^2.1.3",
