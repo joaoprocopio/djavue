@@ -10,6 +10,7 @@ python = "^3.11"
 Django = "^4.2.4"
 python-decouple = "^3.8"
 psycopg2 = "^2.9.7"
+django-extensions = "^3.2.3"
 
 [tool.poetry.group.dev.dependencies]
 ruff = "^0.0.284"

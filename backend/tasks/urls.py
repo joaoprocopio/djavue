@@ -1,3 +1,7 @@
-# from tasks import views
+from django.urls import path
 
-urlpatterns = []
+from tasks import views
+
+urlpatterns = [
+    path("", views.view_tasks),
+]
