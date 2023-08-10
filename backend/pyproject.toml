@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "djavue"
+version = "0.0.1"
+description = ""
+authors = ["Your Name <you@example.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+Django = "^4.2.4"
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.0.284"
+black = "^23.7.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
