@@ -1,9 +1,15 @@
 from django.http import JsonResponse
 
+from authentication.serializers import (
+    anonymous_user_serializer,
+    authenticated_user_serializer,
+)
 
-def current_user_view(request):
-    return JsonResponse(
-        {
-            "is_authenticated": request.user.is_authenticated,
-        }
-    )
+
+def view_whoami(request):
+    user = request.user
+
+    if not user.is_authenticated:
+        return JsonResponse(anonymous_user_serializer(user))
+
+    return JsonResponse(authenticated_user_serializer(user))
