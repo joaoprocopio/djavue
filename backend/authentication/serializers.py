@@ -1,10 +1,10 @@
-def anonymous_user_serializer(user):
+def serialize_anonymous_user(user):
     return {
         "is_authenticated": user.is_authenticated,
     }
 
 
-def authenticated_user_serializer(user):
+def serialize_authenticated_user(user):
     return {
         "id": user.id,
         "email": user.email,

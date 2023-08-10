@@ -1,8 +1,8 @@
 from django.http import JsonResponse
 
 from authentication.serializers import (
-    anonymous_user_serializer,
-    authenticated_user_serializer,
+    serialize_anonymous_user,
+    serialize_authenticated_user,
 )
 
 
@@ -10,6 +10,6 @@ def view_whoami(request):
     user = request.user
 
     if not user.is_authenticated:
-        return JsonResponse(anonymous_user_serializer(user))
+        return JsonResponse(serialize_anonymous_user(user))
 
-    return JsonResponse(authenticated_user_serializer(user))
+    return JsonResponse(serialize_authenticated_user(user))
