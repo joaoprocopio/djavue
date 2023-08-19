@@ -1,5 +1,7 @@
 from http import HTTPStatus
+from json import loads
 
+from django.core.handlers.wsgi import WSGIRequest
 from django.core.paginator import Paginator
 from django.http import JsonResponse
 from django.views.decorators.http import require_GET, require_POST
@@ -9,13 +11,14 @@ from tasks.services import filter_tasks, get_task
 
 
 @require_GET
-def view_tasks(request):
+def view_tasks(request: WSGIRequest):
     page = int(request.GET.get("page", 1))
     per_page = int(request.GET.get("per_page", 30))
 
     try:
-        tasks = filter_tasks(owner_id=request.user.id)
-    except BaseException:
+        tasks = filter_tasks(owner_id=request.user.pk)
+
+    except Exception:
         return JsonResponse({})
 
     count = tasks.count()
@@ -33,20 +36,38 @@ def view_tasks(request):
 
 
 @require_GET
-def view_task(request, task_id):
+def view_task(request: WSGIRequest, task_id):
     try:
-        task = get_task(task_id)
+        task = get_task(id=task_id)
         task = serialize_task(task)
 
         return JsonResponse(task)
 
-    except BaseException:
+    except Exception:
         return JsonResponse({}, status=HTTPStatus.NOT_FOUND)
 
 
 @require_POST
-def delete_task(request):
-    return JsonResponse({})
+def delete_task(request: WSGIRequest):
+    try:
+        user = request.user
+        body = loads(request.body)
+        task_id = body.get("task_id")
+
+        if not task_id:
+            raise Exception
+
+        task = get_task(id=task_id)
+
+        if task.owner.pk != user.pk:
+            raise Exception
+
+        task.is_done = True
+
+        return JsonResponse(serialize_task(task))
+
+    except Exception:
+        return JsonResponse({}, status=HTTPStatus.BAD_REQUEST)
 
 
 # TODO: criar tarefa

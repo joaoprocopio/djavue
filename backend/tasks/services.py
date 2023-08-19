@@ -5,5 +5,5 @@ def filter_tasks(**kwargs):
     return Task.objects.filter(**kwargs)
 
 
-def get_task(id: int):
-    return Task.objects.get(id=id)
+def get_task(**kwargs):
+    return Task.objects.get(**kwargs)
