@@ -66,11 +66,11 @@ WSGI_APPLICATION = "djavue.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": config("POSTGRES_DB", default="postgres"),
-        "USER": config("POSTGRES_USER", default="postgres"),
-        "PASSWORD": config("POSTGRES_PASSWORD", default="postgres"),
-        "HOST": config("POSTGRES_HOST", default="localhost"),
-        "PORT": config("POSTGRES_PORT", default="5432"),
+        "NAME": config("DJANGO_DB_NAME", default="postgres"),
+        "USER": config("DJANGO_DB_USER", default="postgres"),
+        "PASSWORD": config("DJANGO_DB_PASSWORD", default="postgres"),
+        "HOST": config("DJANGO_DB_HOST", default="localhost"),
+        "PORT": config("DJANGO_DB_PORT", default="5432"),
     }
 }
 
