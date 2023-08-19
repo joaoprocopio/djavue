@@ -1,9 +1,10 @@
 from authentication.serializers import serialize_user
+from tasks.models import Task
 
 
-def serialize_task(task):
+def serialize_task(task: Task):
     return {
-        "id": task.id,
+        "id": task.pk,
         "owner": serialize_user(task.owner),
         "title": task.title,
         "description": task.description,

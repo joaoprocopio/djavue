@@ -1,7 +1,10 @@
-def serialize_user(user):
+from django.contrib.auth.models import User
+
+
+def serialize_user(user: User):
     return (
         {
-            "id": user.id,
+            "id": user.pk,
             "email": user.email,
             "first_name": user.first_name,
             "username": user.username,
