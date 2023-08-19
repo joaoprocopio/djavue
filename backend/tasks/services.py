@@ -1,8 +1,8 @@
 from tasks.models import Task
 
 
-def get_tasks():
-    return Task.objects.all()
+def filter_tasks(**kwargs):
+    return Task.objects.filter(**kwargs)
 
 
 def get_task(id: int):

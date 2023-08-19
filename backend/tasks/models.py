@@ -10,3 +10,6 @@ class Task(models.Model):
     created_at = models.DateTimeField(default=timezone.now)
     updated_at = models.DateTimeField(null=True, blank=True)
     is_done = models.BooleanField(default=False)
+
+    def __str__(self) -> str:
+        return self.title

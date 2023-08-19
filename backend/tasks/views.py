@@ -1,12 +1,11 @@
 from http import HTTPStatus
 
-from django.core.exceptions import ObjectDoesNotExist
 from django.core.paginator import Paginator
 from django.http import JsonResponse
 from django.views.decorators.http import require_GET, require_POST
 
 from tasks.serializers import serialize_task
-from tasks.services import get_task, get_tasks
+from tasks.services import filter_tasks, get_task
 
 
 @require_GET
@@ -14,7 +13,10 @@ def view_tasks(request):
     page = int(request.GET.get("page", 1))
     per_page = int(request.GET.get("per_page", 30))
 
-    tasks = get_tasks()
+    try:
+        tasks = filter_tasks(owner_id=request.user.id)
+    except BaseException:
+        return JsonResponse()
 
     count = tasks.count()
 
@@ -38,7 +40,7 @@ def view_task(request, task_id):
 
         return JsonResponse(task)
 
-    except ObjectDoesNotExist:
+    except BaseException:
         return JsonResponse({}, status=HTTPStatus.NOT_FOUND)
 
 
