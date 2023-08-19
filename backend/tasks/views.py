@@ -63,6 +63,7 @@ def delete_task(request: WSGIRequest):
             raise Exception
 
         task.is_done = True
+        task.save()
 
         return JsonResponse(serialize_task(task))
 
