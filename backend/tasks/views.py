@@ -16,7 +16,7 @@ def view_tasks(request):
     try:
         tasks = filter_tasks(owner_id=request.user.id)
     except BaseException:
-        return JsonResponse()
+        return JsonResponse({})
 
     count = tasks.count()
 
