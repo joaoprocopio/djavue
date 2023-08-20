@@ -13,12 +13,13 @@ router = Router()
 
 
 @router.get("/")
-def view_tasks(request: WSGIRequest):
-    page = int(request.GET.get("page", 1))
-    per_page = int(request.GET.get("per_page", 30))
-
+def view_tasks(
+    request: WSGIRequest,
+    page: int = 1,
+    per_page: int = 30,
+):
     try:
-        tasks = filter_tasks(owner_id=request.user.pk)
+        tasks = filter_tasks(owner=request.user)
 
     except Exception:
         return JsonResponse({})
@@ -38,9 +39,13 @@ def view_tasks(request: WSGIRequest):
 
 
 @router.get("/{task_id}")
-def view_task(request: WSGIRequest, task_id):
+def view_task(request: WSGIRequest, task_id: int):
     try:
         task = get_task(id=task_id)
+
+        if task.owner.pk != request.user.pk:
+            raise Exception
+
         task = serialize_task(task)
 
         return JsonResponse(task)
@@ -52,7 +57,6 @@ def view_task(request: WSGIRequest, task_id):
 @router.post("/delete")
 def delete_task(request: WSGIRequest):
     try:
-        user = request.user
         body = loads(request.body)
         task_id = body.get("task_id")
 
@@ -61,7 +65,7 @@ def delete_task(request: WSGIRequest):
 
         task = get_task(id=task_id)
 
-        if task.owner.pk != user.pk:
+        if task.owner.pk != request.user.pk:
             raise Exception
 
         task.is_deleted = True
