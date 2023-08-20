@@ -17,10 +17,6 @@ def whoami_view(request: WSGIRequest):
     user = request.user
 
     if not user.is_authenticated:
-        user = serialize_anonymous_user(user)
+        return HTTPStatus.UNAUTHORIZED, serialize_anonymous_user(user)
 
-        return HTTPStatus.UNAUTHORIZED, user
-
-    user = serialize_user(user)
-
-    return HTTPStatus.OK, user
+    return HTTPStatus.OK, serialize_user(user)
