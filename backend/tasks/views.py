@@ -4,13 +4,15 @@ from json import loads
 from django.core.handlers.wsgi import WSGIRequest
 from django.core.paginator import Paginator
 from django.http import JsonResponse
-from django.views.decorators.http import require_GET, require_POST
+from ninja import Router
 
 from tasks.serializers import serialize_task
 from tasks.services import filter_tasks, get_task
 
+router = Router()
 
-@require_GET
+
+@router.get("/")
 def view_tasks(request: WSGIRequest):
     page = int(request.GET.get("page", 1))
     per_page = int(request.GET.get("per_page", 30))
@@ -35,7 +37,7 @@ def view_tasks(request: WSGIRequest):
     )
 
 
-@require_GET
+@router.get("/{task_id}")
 def view_task(request: WSGIRequest, task_id):
     try:
         task = get_task(id=task_id)
@@ -47,7 +49,7 @@ def view_task(request: WSGIRequest, task_id):
         return JsonResponse({}, status=HTTPStatus.NOT_FOUND)
 
 
-@require_POST
+@router.post("/delete")
 def delete_task(request: WSGIRequest):
     try:
         user = request.user
