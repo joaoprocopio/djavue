@@ -1,7 +1,6 @@
 from http import HTTPStatus
 
 from django.core.handlers.wsgi import WSGIRequest
-from django.http import JsonResponse
 from ninja import Router
 
 from authentication.schemas import AnonymousUserSchema, UserSchema
@@ -12,10 +11,7 @@ router = Router()
 
 @router.get(
     "whoami",
-    response={
-        HTTPStatus.OK: UserSchema,
-        HTTPStatus.UNAUTHORIZED: AnonymousUserSchema,
-    },
+    response={HTTPStatus.OK: UserSchema, HTTPStatus.UNAUTHORIZED: AnonymousUserSchema},
 )
 def whoami_view(request: WSGIRequest):
     user = request.user
@@ -23,8 +19,8 @@ def whoami_view(request: WSGIRequest):
     if not user.is_authenticated:
         user = serialize_anonymous_user(user)
 
-        return JsonResponse(user, status=HTTPStatus.UNAUTHORIZED)
+        return HTTPStatus.UNAUTHORIZED, user
 
     user = serialize_user(user)
 
-    return JsonResponse(user)
+    return HTTPStatus.OK, user

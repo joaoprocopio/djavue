@@ -1,11 +1,10 @@
 from pathlib import Path
 
 from decouple import config
-from django.core.management.utils import get_random_secret_key
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = config("DJANGO_SECRET_KEY", default=get_random_secret_key())
+SECRET_KEY = config("DJANGO_SECRET_KEY", default="secret_key")
 
 DEBUG = config("DJANGO_DEBUG", default=True, cast=bool)
 
