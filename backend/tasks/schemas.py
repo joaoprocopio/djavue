@@ -14,3 +14,7 @@ class TaskSchema(Schema):
     created_at: datetime
     updated_at: Optional[datetime]
     is_deleted: bool
+
+
+class TaskDeleteSchema(Schema):
+    task_id: int

@@ -6,7 +6,7 @@ from django.core.paginator import Paginator
 from ninja import Router
 
 from djavue.schemas import ErrorSchema
-from tasks.schemas import TaskSchema
+from tasks.schemas import TaskDeleteSchema, TaskSchema
 from tasks.serializers import serialize_task
 from tasks.services import filter_tasks, get_task
 
@@ -49,15 +49,12 @@ def task_view(request: WSGIRequest, task_id: int):
 
 
 @router.post("/delete")
-def task_delete_view(request: WSGIRequest):
+def task_delete_view(request: WSGIRequest, body: TaskDeleteSchema):
     try:
-        body = loads(request.body)
-        task_id = body.get("task_id")
-
-        if not task_id:
+        if not body.task_id:
             raise Exception
 
-        task = get_task(id=task_id)
+        task = get_task(id=body.task_id)
 
         if task.owner.pk != request.user.pk:
             raise Exception
