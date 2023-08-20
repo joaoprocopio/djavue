@@ -13,7 +13,7 @@ router = Router()
 
 
 @router.get("/")
-def view_tasks(
+def tasks_view(
     request: WSGIRequest,
     page: int = 1,
     per_page: int = 30,
@@ -39,7 +39,7 @@ def view_tasks(
 
 
 @router.get("/{task_id}")
-def view_task(request: WSGIRequest, task_id: int):
+def task_view(request: WSGIRequest, task_id: int):
     try:
         task = get_task(id=task_id)
 
@@ -55,7 +55,7 @@ def view_task(request: WSGIRequest, task_id: int):
 
 
 @router.post("/delete")
-def delete_task(request: WSGIRequest):
+def task_delete_view(request: WSGIRequest):
     try:
         body = loads(request.body)
         task_id = body.get("task_id")

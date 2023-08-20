@@ -7,7 +7,7 @@ router = Router()
 
 
 @router.get("whoami")
-def view_whoami(request):
+def whoami_view(request):
     user = request.user
     user = serialize_user(user)
 
