@@ -45,7 +45,7 @@ def task_view(request: WSGIRequest, task_id: int):
         return HTTPStatus.OK, task
 
     except Exception:
-        return HTTPStatus.NOT_FOUND, {"message": "Not found"}
+        return HTTPStatus.NOT_FOUND, {"message": "Not found or unauthorized"}
 
 
 @router.post("/delete")
