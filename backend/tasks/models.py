@@ -9,7 +9,7 @@ class Task(models.Model):
     description = models.CharField(max_length=1024)
     created_at = models.DateTimeField(default=timezone.now)
     updated_at = models.DateTimeField(null=True, blank=True)
-    is_done = models.BooleanField(default=False)
+    is_deleted = models.BooleanField(default=False)
 
     def __str__(self) -> str:
         return self.title

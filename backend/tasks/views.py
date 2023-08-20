@@ -62,7 +62,7 @@ def delete_task(request: WSGIRequest):
         if task.owner.pk != user.pk:
             raise Exception
 
-        task.is_done = True
+        task.is_deleted = True
         task.save()
 
         return JsonResponse(serialize_task(task))
