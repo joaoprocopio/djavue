@@ -8,7 +8,8 @@ export default defineNuxtConfig({
             charset: "utf-8",
             viewport: "width=device-width, initial-scale=1",
             title: "Construindo plataformas com qualidade",
-            titleTemplate: "%s | Djavue"
+            titleTemplate: "%s | Djavue",
+            link: [{ rel: "icon", type: "image/svg+xml", href: "/favicon.svg" }]
         }
     },
     devtools: {
