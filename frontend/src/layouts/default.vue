@@ -5,7 +5,7 @@
                 <VIcon>hub</VIcon>
             </template>
         </VAppBar>
-        <VMain v-bind="$attrs">
+        <VMain>
             <slot />
         </VMain>
     </VApp>

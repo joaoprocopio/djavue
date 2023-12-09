@@ -1,3 +1,5 @@
 <template>
-    <VBtn prepend-icon="home"> page </VBtn>
+    <VResponsive>
+        <VBtn prepend-icon="home">page</VBtn>
+    </VResponsive>
 </template>

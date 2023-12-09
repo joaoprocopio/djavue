@@ -3,14 +3,9 @@ import vuetify, { transformAssetUrls } from "vite-plugin-vuetify"
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
     srcDir: "src",
-    devtools: {
-        enabled: true
-    },
     app: {
         head: {
-            htmlAttrs: {
-                lang: "pt-br"
-            },
+            htmlAttrs: { lang: "pt-br" },
             charset: "utf-8",
             viewport: "width=device-width, initial-scale=1",
             title: "Construindo plataformas com qualidade",
@@ -30,7 +25,7 @@ export default defineNuxtConfig({
             ]
         }
     },
-    css: ["vuetify/styles"],
+    devtools: { enabled: true },
     plugins: ["~/plugins/vuetify.ts"],
     build: { transpile: ["vuetify"] },
     hooks: {
