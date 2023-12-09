@@ -1,3 +1,3 @@
 <template>
-    <div>page</div>
+    <VBtn>page</VBtn>
 </template>

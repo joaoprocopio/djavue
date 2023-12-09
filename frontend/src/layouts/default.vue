@@ -1,7 +1,8 @@
 <template>
-    <header>header</header>
-    <main v-bind="$attrs">
-        <slot />
-    </main>
-    <footer>footer</footer>
+    <VApp>
+        <VAppBar>header</VAppBar>
+        <VMain v-bind="$attrs">
+            <slot />
+        </VMain>
+    </VApp>
 </template>
