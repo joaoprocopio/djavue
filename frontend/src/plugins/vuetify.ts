@@ -1,4 +1,5 @@
 import { createVuetify } from "vuetify"
+import { aliases, md } from "vuetify/iconsets/md"
 
 export default defineNuxtPlugin((app) => {
     const vuetify = createVuetify({
@@ -7,6 +8,11 @@ export default defineNuxtPlugin((app) => {
             global: {
                 elevation: 0
             }
+        },
+        icons: {
+            defaultSet: "md",
+            aliases,
+            sets: { md }
         }
     })
 

@@ -1,3 +1,3 @@
 <template>
-    <VBtn>page</VBtn>
+    <VBtn prepend-icon="home"> page </VBtn>
 </template>
