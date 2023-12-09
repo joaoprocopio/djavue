@@ -1,6 +1,10 @@
 <template>
     <VApp>
-        <VAppBar>header</VAppBar>
+        <VAppBar>
+            <template #prepend>
+                <VIcon>hub</VIcon>
+            </template>
+        </VAppBar>
         <VMain v-bind="$attrs">
             <slot />
         </VMain>

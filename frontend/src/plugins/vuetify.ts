@@ -7,6 +7,9 @@ export default defineNuxtPlugin((app) => {
         defaults: {
             global: {
                 elevation: 0
+            },
+            VIcon: {
+                class: "material-icons-outlined"
             }
         },
         icons: {
