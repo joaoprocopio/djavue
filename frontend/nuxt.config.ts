@@ -1,5 +1,3 @@
-import vuetify, { transformAssetUrls } from "vite-plugin-vuetify"
-
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
     srcDir: "src",
@@ -25,13 +23,5 @@ export default defineNuxtConfig({
             ]
         }
     },
-    devtools: { enabled: true },
-    plugins: ["~/plugins/vuetify.ts"],
-    build: { transpile: ["vuetify"] },
-    hooks: {
-        "vite:extendConfig": (config) => {
-            config.plugins!.push(vuetify({ autoImport: true }))
-        }
-    },
-    vite: { vue: { template: { transformAssetUrls } } }
+    devtools: { enabled: true }
 })
