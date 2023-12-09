@@ -1,0 +1,17 @@
+{
+    "root": true,
+    "parser": "vue-eslint-parser",
+    "plugins": ["@typescript-eslint"],
+    "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:vue/vue3-recommended",
+        "@nuxtjs/eslint-config-typescript",
+        "plugin:prettier/recommended"
+    ],
+    "parserOptions": {
+        "parser": "@typescript-eslint/parser",
+        "sourceType": "module",
+        "ecmaVersion": "latest"
+    }
+}
